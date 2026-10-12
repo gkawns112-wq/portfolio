@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조성신 | 브랜드 마케터 · 웹 기획자</title>
+<meta name="description" content="복잡한 문제를 정리하고, 결과물로 증명하는 브랜드 마케터 조성신. 홍보·콘텐츠, 웹 기획, 데이터, AI 활용.">
+<meta name="author" content="조성신">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="조성신 | Words that prove the brand">
+<meta property="og:description" content="복잡한 문제를 정리하고, 결과물로 증명하는 브랜드 마케터">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0b0b'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='38' fill='white'%3Ecs%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&text=choseongshin&display=swap">
+<script>(function(d){d.classList.add('cs-js');try{var t=localStorage.getItem('cs-theme');if(t==='light'||t==='dark')d.setAttribute('data-cs-theme',t)}catch(e){}})(document.documentElement)</script>
+<style>
+/* ==========================================================================
+   CS PORTFOLIO — 조성신 포트폴리오 스타일
+   명명 규칙: cs-블록 / cs-블록__요소 / cs-블록--변형 / is-상태
+   자세한 설명은 docs/CODE_GUIDE.md
+   ========================================================================== */
+
+/* @component tokens : 색·글꼴·간격 변수. 테마를 바꿀 때 여기만 수정 */
+:root{
+  --cs-black:#0b0b0b; --cs-ink:#111; --cs-g1:#2a2a2a; --cs-g2:#6b6b6b; --cs-g3:#a3a3a3; --cs-g4:#d9d9d9; --cs-g5:#efefef; --cs-paper:#fff;
+  --cs-line:#e2e2e2; --cs-line-d:rgba(255,255,255,.16);
+  --cs-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --cs-serif:"Instrument Serif","Times New Roman",serif;
+  --cs-max:1320px; --cs-gutter:clamp(20px,4vw,56px);
+  --cs-ease:cubic-bezier(.22,.8,.2,1);
+  color-scheme:light;
+}
+
+/* @component theme : 다크 모드. 시스템 설정을 따르고, 상단 버튼으로 자동/밝게/어둡게 고정 가능 */
+@media (prefers-color-scheme:dark){
+  :root:not([data-cs-theme="light"]){color-scheme:dark;--cs-paper:#151515;--cs-ink:#ececec;--cs-black:#000;--cs-g2:#a8a8a8;--cs-g3:#767676;--cs-g4:#3a3a3a;--cs-g5:#1f1f1f;--cs-line:#2a2a2a}
+}
+:root[data-cs-theme="dark"]{color-scheme:dark;--cs-paper:#151515;--cs-ink:#ececec;--cs-black:#000;--cs-g2:#a8a8a8;--cs-g3:#767676;--cs-g4:#3a3a3a;--cs-g5:#1f1f1f;--cs-line:#2a2a2a}
+/* 항상 어두운 면(검은 섹션·첫 화면 시트·메뉴·사례 그림)은 두 모드 모두 같은 회색 단계를 쓴다 */
+.cs-ink,.cs-cover__sheet,.cs-drawer,.cs-stage__art{--cs-g2:#6b6b6b;--cs-g3:#a3a3a3;--cs-g4:#d9d9d9}
+.cs-theme{width:22px;height:22px;border:1.5px solid currentColor;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0}
+.cs-theme::after{content:"";position:absolute;inset:0;background:currentColor;transform:translateX(50%);transition:transform .45s var(--cs-ease)}
+.cs-theme[data-mode="light"]::after{transform:translateX(105%)}
+.cs-theme[data-mode="dark"]::after{transform:none}
+html.cs-theme-anim,html.cs-theme-anim *{transition:background-color .45s,color .45s,border-color .45s,fill .45s,stroke .45s!important}
+
+/* @component base : 리셋과 공통 유틸리티 */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--cs-sans);color:var(--cs-ink);background:var(--cs-paper);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+[hidden]{display:none!important}
+.cs-wrap{max-width:var(--cs-max);margin:0 auto;padding:0 var(--cs-gutter)}
+.cs-chapter{padding:clamp(100px,12vw,180px) 0;position:relative}
+.cs-chapter--flush{padding-top:0}
+.cs-ink{background:var(--cs-black);color:#fff}
+.cs-it{font-family:var(--cs-serif);font-style:italic;font-weight:400}
+.cs-light{font-weight:250;letter-spacing:-.045em}
+.cs-ink .cs-light{color:var(--cs-g3)}
+.cs-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cs-skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--cs-ink);color:var(--cs-paper);padding:10px 16px;border-radius:999px;font-size:14px;transition:top .3s}
+.cs-skip:focus{top:16px}
+
+/* @component rise : 스크롤하면 떠오르는 등장 효과 (JS가 없으면 그냥 보임) */
+.cs-js .cs-rise{opacity:0;transform:translateY(36px);transition:opacity 1s var(--cs-ease),transform 1s var(--cs-ease)}
+.cs-js .cs-rise.is-in{opacity:1;transform:none}
+.cs-d1{transition-delay:.08s!important}.cs-d2{transition-delay:.16s!important}.cs-d3{transition-delay:.24s!important}.cs-d4{transition-delay:.32s!important}
+.cs-mask{display:block;overflow:hidden}
+.cs-js .cs-mask>span{display:block;transform:translateY(105%);transition:transform 1.1s var(--cs-ease)}
+.cs-js .is-in .cs-mask>span{transform:none}
+.cs-mask:nth-child(2)>span{transition-delay:.08s}
+
+/* @component tr : 영어 ↔ 한글 전환. 마우스를 올리면 한글, 터치 기기는 처음부터 한글. 첫 화면은 스크롤 진행률(--f)로 전환 */
+.cs-tr{display:inline-grid;overflow:hidden;overflow:clip;padding:.08em .06em;margin:-.08em -.06em}
+.cs-tr>span{grid-area:1/1;transition:transform .5s var(--cs-ease),opacity .35s}
+.cs-tr__ko{font-family:var(--cs-sans);font-style:normal;text-transform:none;letter-spacing:-.01em;transform:translateY(110%);opacity:0}
+.cs-tr:not(.cs-flip):hover>.cs-tr__en,:is(a,button,.cs-tr-host):is(:hover,:focus-visible) .cs-tr:not(.cs-flip)>.cs-tr__en{transform:translateY(-110%);opacity:0}
+.cs-tr:not(.cs-flip):hover>.cs-tr__ko,:is(a,button,.cs-tr-host):is(:hover,:focus-visible) .cs-tr:not(.cs-flip)>.cs-tr__ko{transform:none;opacity:1}
+@media (hover:none){.cs-tr:not(.cs-flip)>.cs-tr__en{visibility:hidden}.cs-tr:not(.cs-flip)>.cs-tr__ko{transform:none;opacity:1}}
+.cs-flip>span{transition:none}
+.cs-flip>.cs-tr__en{transform:translateY(calc(var(--f,0) * -110%));opacity:calc(1 - var(--f,0))}
+.cs-flip>.cs-tr__ko{transform:translateY(calc((1 - var(--f,0)) * 110%));opacity:var(--f,0)}
+
+/* @component spread : 번호 라벨(왼쪽) + 본문(오른쪽) 2단 구성 */
+.cs-spread{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,5vw,80px);align-items:start}
+.cs-marker{position:sticky;top:120px;display:flex;align-items:flex-start;gap:10px}
+.cs-marker--inline{position:static}
+.cs-marker sup{font-size:13px;font-weight:600;color:var(--cs-g2);letter-spacing:.04em;line-height:1.9}
+.cs-marker h2{font-size:15px;font-weight:700;letter-spacing:.02em}
+.cs-marker h2 small{display:block;font-family:var(--cs-serif);font-style:italic;font-weight:400;font-size:34px;letter-spacing:-.01em;margin-top:6px;line-height:1}
+.cs-ink .cs-marker sup{color:var(--cs-g3)}
+.cs-lede{font-size:clamp(30px,4.2vw,60px);font-weight:700;line-height:1.28;letter-spacing:-.04em}
+.cs-lede .cs-it{font-size:1.1em;letter-spacing:0}
+.cs-body{font-size:clamp(16px,1.25vw,18px);color:var(--cs-g2);line-height:1.8}
+.cs-ink .cs-body{color:var(--cs-g3)}
+.cs-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.cs-head .cs-lede{max-width:780px}
+@media(max-width:900px){.cs-spread{grid-template-columns:1fr}.cs-marker{position:static}}
+
+/* @component masthead : 상단 고정 메뉴 (흑/백 어디서든 보이도록 difference 합성) + 모바일 서랍 메뉴 */
+.cs-mast{position:fixed;inset:0 0 auto;z-index:60;mix-blend-mode:difference;color:#fff;transition:background-color .35s,box-shadow .35s}
+/* 첫 화면을 지나면 반투명 바탕을 깔아 본문 글자와 겹치지 않게 */
+.cs-mast.is-past{mix-blend-mode:normal;color:var(--cs-ink);background:color-mix(in srgb,var(--cs-paper) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--cs-line)}
+.cs-mast .cs-wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.cs-logo{font-size:18px;font-weight:800;letter-spacing:-.02em;transition:opacity .5s var(--cs-ease),transform .5s var(--cs-ease),visibility 0s}
+.cs-logo--script{font-family:"Parisienne",cursive;font-weight:400;font-size:30px;letter-spacing:0;line-height:1;padding-top:4px}
+/* 이름이 이미 보이는 첫 화면에서는 로고를 숨기고, 검은 화면이 열리면 나타남 */
+.cs-js .cs-mast:not(.is-past) .cs-logo{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .4s var(--cs-ease),transform .4s var(--cs-ease),visibility 0s .4s}
+.cs-nav{display:flex;gap:34px;font-size:14px;font-weight:600;letter-spacing:.02em}
+.cs-nav a{position:relative;padding:4px 0}
+.cs-nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--cs-ease)}
+.cs-nav a:hover::after,.cs-nav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.cs-mast__tools{display:flex;align-items:center;gap:18px}
+.cs-pill{font-size:13px;font-weight:600;border:1px solid currentColor;padding:9px 16px;border-radius:999px}
+.cs-burger{display:none;width:28px;height:18px;position:relative}
+.cs-burger i{position:absolute;left:0;right:0;height:1.5px;background:currentColor}
+.cs-burger i:nth-child(1){top:0}.cs-burger i:nth-child(2){top:8px}.cs-burger i:nth-child(3){top:16px}
+@media(max-width:960px){.cs-nav,.cs-mast .cs-pill{display:none}.cs-burger{display:block}}
+.cs-drawer{position:fixed;inset:0;z-index:70;background:var(--cs-black);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 var(--cs-gutter);gap:18px;transform:translateY(-100%);visibility:hidden;transition:transform .6s var(--cs-ease),visibility .6s}
+.cs-drawer.is-open{transform:none;visibility:visible}
+.cs-drawer a{font-size:34px;font-weight:700;letter-spacing:-.03em}
+.cs-drawer__close{position:absolute;top:26px;right:var(--cs-gutter);font-size:28px;color:#fff}
+
+/* @component folio : 오른쪽 섹션 위치 표시 */
+.cs-folio{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:50;mix-blend-mode:difference;display:flex;flex-direction:column;gap:12px}
+.cs-folio a{display:flex;align-items:center;justify-content:flex-end;gap:12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em}
+.cs-folio a span{opacity:0;transform:translateX(6px);transition:.35s}
+.cs-folio a i{width:14px;height:1px;background:#fff;opacity:.45;transition:.35s}
+.cs-folio a:hover span,.cs-folio a:focus-visible span,.cs-folio a.is-on span{opacity:1;transform:none}
+.cs-folio a.is-on i{width:36px;opacity:1}
+@media(max-width:1100px){.cs-folio{display:none}}
+
+/* @component cover : 첫 화면. 헤드라인 속 작은 창(lens)이 스크롤에 따라 화면 전체로 열림 */
+.cs-cover{height:300vh;position:relative}
+.cs-cover[data-cs-cover="auto"]{height:200vh}
+@media(max-width:700px){.cs-cover:not([data-cs-cover="auto"]){height:420vh}}
+.cs-cover__pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.cs-cover__type{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center}
+.cs-cover__meta{display:flex;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:.18em;color:var(--cs-g2);margin-bottom:clamp(20px,3vh,40px)}
+.cs-cover__title{font-size:clamp(56px,11.4vw,188px);font-weight:800;line-height:.9;letter-spacing:-.055em;text-transform:uppercase}
+.cs-cover__title .cs-it{text-transform:none;font-size:1.08em;letter-spacing:-.02em}
+.cs-cover__row{display:flex;align-items:center;gap:.18em}
+.cs-cover__lens{display:inline-block;width:1.9em;height:.72em;background:var(--cs-black);border-radius:.36em;flex-shrink:0;position:relative;overflow:hidden}
+.cs-cover__lens::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 10px,rgba(255,255,255,.08) 10px 11px);animation:cs-scan 3s linear infinite}
+@keyframes cs-scan{to{transform:translateX(11px)}}
+.cs-cover__foot{position:absolute;left:0;right:0;bottom:36px}
+.cs-cover__foot .cs-wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-size:14px;color:var(--cs-g2)}
+.cs-cover__foot strong{color:var(--cs-ink);font-size:18px;font-weight:700}
+.cs-cue{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em}
+.cs-cue i{width:1px;height:44px;background:var(--cs-g4);position:relative;overflow:hidden}
+.cs-cue i::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:var(--cs-ink);animation:cs-drop 1.8s var(--cs-ease) infinite}
+@keyframes cs-drop{to{top:100%}}
+.cs-cover__sheet{position:absolute;inset:0;background:var(--cs-black);color:#fff;clip-path:inset(var(--t,50%) var(--r,50%) var(--b,50%) var(--l,50%) round var(--rad,0px));display:flex;align-items:center;will-change:clip-path}
+.cs-cover__sheet .cs-wrap{width:100%}
+.cs-cover__sheet .cs-wrap>*{opacity:var(--o,0);transform:translateY(calc((1 - var(--o,0)) * 24px))}
+.cs-cover__kicker{font-family:var(--cs-serif);font-size:clamp(20px,2vw,28px);color:var(--cs-g3)}
+.cs-cover__sheet h1{font-size:clamp(40px,6.4vw,104px);font-weight:800;letter-spacing:-.05em;line-height:1.02;margin:18px 0 26px}
+.cs-cover__sheet p{font-size:clamp(16px,1.5vw,21px);color:var(--cs-g3);line-height:1.7;max-width:720px}
+.cs-chips{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.cs-chips span{border:1px solid var(--cs-line-d);padding:8px 16px;border-radius:999px;font-size:13px}
+.cs-cover__cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+.cs-btn{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;padding:14px 22px;border-radius:999px;border:1px solid currentColor;transition:background .3s,color .3s}
+.cs-btn--solid{background:#fff;color:var(--cs-black);border-color:#fff}
+.cs-btn--solid:hover{background:transparent;color:#fff}
+.cs-btn--ghost:hover{background:#fff;color:var(--cs-black)}
+.cs-index{position:absolute;right:var(--cs-gutter);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;border-top:1px solid var(--cs-line-d);width:250px;opacity:var(--o,0)}
+.cs-index a{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--cs-line-d);font-size:14px;color:var(--cs-g3);transition:color .3s,padding .3s}
+.cs-index a:hover,.cs-index a:focus-visible{color:#fff;padding-left:8px}
+.cs-index a em{font-family:var(--cs-serif);font-style:italic;font-size:16px}
+@media(max-width:1280px){.cs-index{display:none}}
+@media(max-width:700px){.cs-cover__title{font-size:clamp(30px,10.6vw,188px)}.cs-cover__lens{width:1.4em}.cs-cover__meta{gap:12px}.cs-cover__meta span:last-child{white-space:nowrap}}
+/* 움직임 줄이기 설정: 스크롤 연출 없이 두 화면을 순서대로 보여줌 */
+/* 위치 계산 전에는 시트 크기 0 (위 clip-path 기본값). JS가 꺼져 있거나 움직임 줄이기 설정이면 두 화면을 순서대로 */
+.cs-cover.is-static,html:not(.cs-js) .cs-cover{height:auto}
+.cs-cover.is-static .cs-cover__pin,html:not(.cs-js) .cs-cover__pin{position:relative;height:auto;overflow:visible}
+.cs-cover.is-static .cs-cover__type,html:not(.cs-js) .cs-cover__type{position:relative;height:100svh}
+.cs-cover.is-static .cs-cover__sheet,html:not(.cs-js) .cs-cover__sheet{position:relative;clip-path:none;min-height:100svh;padding:120px 0;--o:1}
+
+/* @component about : 소개 문단 + 인물 자리 + 요약 정보 */
+.cs-about{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(32px,5vw,80px);align-items:end}
+.cs-about .cs-body{margin-top:32px;max-width:640px}
+.cs-portrait{aspect-ratio:3/4;background:var(--cs-g5);position:relative;overflow:hidden;display:grid;place-items:center}
+.cs-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.cs-portrait__mono{font-family:var(--cs-serif);font-style:italic;font-size:clamp(96px,12vw,180px);line-height:1;letter-spacing:-.04em}
+.cs-portrait figcaption{position:absolute;left:20px;bottom:18px;font-size:12px;color:var(--cs-g2);letter-spacing:.06em}
+.cs-facts{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--cs-ink)}
+.cs-facts div{padding:22px 20px 0 0}
+.cs-facts dt{font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--cs-g2)}
+.cs-facts dd{margin-top:10px;font-size:15px;font-weight:600;line-height:1.55}
+@media(max-width:900px){.cs-about{grid-template-columns:1fr}.cs-portrait{aspect-ratio:16/10}.cs-facts{grid-template-columns:repeat(2,1fr);row-gap:24px}}
+
+/* @component tally : 큰 숫자 카운터 (data-cs-count) */
+.cs-tally{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--cs-ink)}
+.cs-tally__cell{padding:34px 0 38px;border-bottom:1px solid var(--cs-line)}
+.cs-tally__cell:nth-child(odd){padding-right:32px;border-right:1px solid var(--cs-line)}
+.cs-tally__cell:nth-child(even){padding-left:32px}
+.cs-tally__cell em{font-style:italic;font-family:var(--cs-serif);font-size:20px;color:var(--cs-g2)}
+.cs-tally__cell strong{display:block;font-size:clamp(64px,8vw,128px);font-weight:800;letter-spacing:-.06em;line-height:1;margin:10px 0 14px;font-variant-numeric:tabular-nums}
+.cs-tally__cell strong small{font-size:.34em;font-weight:700;letter-spacing:-.02em;margin-left:6px}
+.cs-tally__cell p{font-size:15px;color:var(--cs-g2);line-height:1.6}
+.cs-tally__cell cite{display:block;font-style:normal;font-size:12px;color:var(--cs-g3);margin-top:6px;letter-spacing:.02em}
+@media(max-width:700px){.cs-tally{grid-template-columns:1fr}.cs-tally__cell:nth-child(n){padding:28px 0;border-right:0}}
+
+/* @component acrostic : 머리글자로 가치를 풀어낸 목록 (마우스를 올리면 행이 검게 반전) */
+.cs-acrostic{margin-top:clamp(100px,10vw,160px)}
+.cs-acrostic__title{font-size:clamp(36px,5vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1.05}
+.cs-acrostic__list{margin-top:48px;border-top:1px solid var(--cs-ink);position:relative;z-index:0}
+.cs-acrostic__item{display:grid;grid-template-columns:120px 1fr 1.3fr;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--cs-line);position:relative;overflow:hidden;transition:color .45s var(--cs-ease)}
+.cs-acrostic__item::before{content:"";position:absolute;inset:0;background:var(--cs-ink);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--cs-ease);z-index:-1}
+.cs-acrostic__item:hover{color:var(--cs-paper)}
+.cs-acrostic__item:hover::before{transform:scaleY(1)}
+.cs-acrostic__item b{font-family:var(--cs-serif);font-size:72px;font-weight:400;line-height:.9;padding-left:8px}
+.cs-acrostic__item h3{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.cs-acrostic__item h3 span{display:block;font-family:var(--cs-serif);font-style:italic;font-weight:400;font-size:18px;color:var(--cs-g2);margin-top:4px}
+.cs-acrostic__item p{font-size:15px;color:var(--cs-g2);line-height:1.7;padding-right:16px}
+.cs-acrostic__item:hover h3 span,.cs-acrostic__item:hover p{color:color-mix(in srgb,var(--cs-paper) 55%,var(--cs-ink))}
+@media(max-width:800px){.cs-acrostic__item{grid-template-columns:70px 1fr}.cs-acrostic__item p{grid-column:2}.cs-acrostic__item b{font-size:52px}}
+
+/* @component gauge : 쪽번호 · 진행 막대 · 이전/다음(재생) 버튼 */
+.cs-gauge{display:flex;align-items:center;gap:18px;margin-top:28px}
+.cs-gauge__n{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;min-width:22px}
+.cs-gauge__n--total{color:var(--cs-g2)}
+.cs-gauge__bar{flex:1;max-width:320px;height:1px;background:var(--cs-line-d);position:relative;overflow:hidden}
+.cs-gauge__bar span{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(var(--p,0));transition:transform .6s var(--cs-ease)}
+.cs-gauge__btns{display:flex;gap:8px;margin-left:auto}
+.cs-gauge__btns button{width:48px;height:48px;border:1px solid var(--cs-line-d);border-radius:50%;display:grid;place-items:center;font-size:16px;transition:.3s}
+.cs-gauge__btns button:hover{background:#fff;color:var(--cs-black)}
+.cs-gauge--light .cs-gauge__bar{background:var(--cs-line)}
+.cs-gauge--light .cs-gauge__bar span{background:var(--cs-ink);transition:none}
+.cs-gauge--light .cs-gauge__btns button{border-color:var(--cs-line)}
+.cs-gauge--light .cs-gauge__btns button:hover{background:var(--cs-ink);color:var(--cs-paper)}
+.cs-gauge--light .cs-gauge__n--total{color:var(--cs-g3)}
+
+/* @component reel : 경력 카드 가로 슬라이더 (탭 · 화살표 · 스와이프 · 키보드) */
+.cs-reel__tabs{margin-top:56px;display:flex;gap:6px 26px;flex-wrap:wrap;border-bottom:1px solid var(--cs-line-d);padding-bottom:18px}
+.cs-reel__tabs button{font-size:15px;font-weight:600;color:var(--cs-g2);transition:color .3s;position:relative}
+.cs-reel__tabs button[aria-selected="true"]{color:#fff}
+.cs-reel__tabs button[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-19px;height:2px;background:#fff}
+@media(max-width:700px){.cs-reel__tabs{gap:12px 18px}.cs-reel__tabs button[aria-selected="true"]::after{bottom:-5px;height:1px}}
+.cs-reel__view{overflow:hidden;margin-top:48px}
+@media(max-width:700px){.cs-reel__view{margin-top:24px}.cs-reel__tabs{margin-top:28px}.cs-reel__card{min-height:0;padding:28px 24px}.cs-reel__no{font-size:44px}.cs-reel__card time{margin-top:14px}.cs-reel__card h3{font-size:24px}}
+.cs-reel__track{display:flex;gap:24px;transition:transform .8s var(--cs-ease);position:relative}
+.cs-reel__card{flex:0 0 min(560px,86vw);border:1px solid var(--cs-line-d);padding:40px 40px 36px;display:flex;flex-direction:column;min-height:460px;transition:background .4s,color .4s,opacity .4s;opacity:.4;cursor:pointer}
+.cs-reel__card.is-on{opacity:1}
+.cs-reel__card:hover,.cs-reel__card:focus-visible{background:#fff;color:var(--cs-black);outline:none}
+.cs-reel__card:hover .cs-reel__text,.cs-reel__card:hover time,.cs-reel__card:focus-visible .cs-reel__text,.cs-reel__card:focus-visible time{color:var(--cs-g2)}
+.cs-reel__card:hover .cs-tags span,.cs-reel__card:focus-visible .cs-tags span{border-color:var(--cs-g4)}
+.cs-reel__no{font-family:var(--cs-serif);font-size:64px;line-height:1}
+.cs-reel__card time{display:block;margin-top:26px;font-size:13px;color:var(--cs-g3);letter-spacing:.02em}
+.cs-reel__card h3{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:8px}
+.cs-reel__now{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;border:1px solid currentColor;border-radius:999px;padding:3px 9px;margin-left:10px;vertical-align:middle}
+.cs-reel__role{font-size:14px;font-weight:600;margin-top:6px}
+.cs-reel__text{margin-top:22px;font-size:15px;color:var(--cs-g3);line-height:1.75;flex:1}
+.cs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.cs-tags span{font-size:12px;padding:6px 12px;border:1px solid var(--cs-line-d);border-radius:999px}
+
+/* @component stage : 대표 사례 장면 전환 (보일 때만 자동 재생, 마우스를 올리면 멈춤) */
+.cs-stage{position:relative;min-height:520px;margin-top:104px}
+.cs-stage__scene{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);opacity:0;visibility:hidden;transition:opacity .8s var(--cs-ease),visibility .8s}
+.cs-stage__scene.is-on{opacity:1;visibility:visible;position:relative}
+.cs-stage__art{background:var(--cs-black);color:#fff;position:relative;overflow:hidden;min-height:480px;display:flex;align-items:flex-end;padding:36px}
+.cs-stage__art svg{position:absolute;inset:0;width:100%;height:100%}
+.cs-stage__cap{position:relative;font-size:12px;letter-spacing:.2em;color:var(--cs-g3)}
+.cs-stage__no{position:absolute;z-index:1;right:28px;top:14px;font-family:var(--cs-serif);font-size:180px;line-height:1}
+.cs-stage__tag{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--cs-g2)}
+.cs-stage__copy h3{font-size:clamp(32px,3.8vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.12;margin:18px 0 22px}
+.cs-steps{margin-top:30px;border-top:1px solid var(--cs-ink)}
+.cs-steps li{display:grid;grid-template-columns:36px 1fr;padding:13px 0;border-bottom:1px solid var(--cs-line);font-size:15px;font-weight:600}
+.cs-steps li span{font-family:var(--cs-serif);font-style:italic;color:var(--cs-g2);font-weight:400}
+.cs-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;font-weight:700;border-bottom:1px solid currentColor;padding-bottom:2px}
+/* PC: 글 왼쪽 · 그림 오른쪽 (모바일은 그림 → 글 순서 유지) */
+@media(min-width:901px){.cs-stage__copy{order:-1}}
+@media(max-width:900px){.cs-stage__scene{grid-template-columns:1fr}.cs-stage__art{min-height:300px}.cs-stage__no{font-size:120px}}
+@media(max-width:700px){.cs-stage{margin-top:28px;min-height:0}.cs-stage__art{min-height:210px;padding:20px}.cs-stage__no{font-size:84px}.cs-stage__copy h3{margin:12px 0 14px}.cs-steps{display:none}}
+
+/* @component art : 사례 장면의 선 도형 3종 (원 · 격자 · 경로) */
+.cs-art-rings circle{fill:none;stroke:#fff;stroke-width:1;opacity:.35;transform-origin:center;transform-box:fill-box;animation:cs-ripple 6s var(--cs-ease) infinite}
+.cs-art-rings circle:nth-child(2){animation-delay:1.5s}.cs-art-rings circle:nth-child(3){animation-delay:3s}.cs-art-rings circle:nth-child(4){animation-delay:4.5s}
+@keyframes cs-ripple{0%{transform:scale(.2);opacity:.7}100%{transform:scale(1.4);opacity:0}}
+.cs-art-grid rect{fill:none;stroke:rgba(255,255,255,.35);stroke-width:1}
+.cs-art-grid rect.is-fill{fill:#fff;stroke:none;animation:cs-blink 4s steps(1) infinite}
+@keyframes cs-blink{50%{opacity:.15}}
+.cs-art-route .cs-art-route__base{fill:none;stroke:rgba(255,255,255,.18);stroke-width:1;stroke-dasharray:4 6}
+.cs-art-route .cs-art-route__line{fill:none;stroke:#fff;stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;animation:cs-route 5s var(--cs-ease) infinite}
+.cs-art-route circle{fill:var(--cs-black);stroke:#fff;stroke-width:1.4}
+.cs-art-route circle.is-end{fill:#fff}
+@keyframes cs-route{0%{stroke-dashoffset:1}55%,100%{stroke-dashoffset:0}}
+
+/* @component swap : 바꾸기 전 / 바꾼 후 문장 비교 토글 */
+.cs-swap{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,5vw,96px);align-items:start}
+.cs-toggle{display:inline-flex;margin-top:34px;border:1px solid var(--cs-ink);border-radius:999px;padding:4px;position:relative}
+.cs-toggle button{position:relative;z-index:1;width:112px;padding:10px 0;font-size:14px;font-weight:700;border-radius:999px;transition:color .35s}
+.cs-toggle button[aria-pressed="true"]{color:var(--cs-paper)}
+.cs-toggle i{position:absolute;top:4px;bottom:4px;left:4px;width:112px;background:var(--cs-ink);border-radius:999px;transition:transform .45s var(--cs-ease)}
+.cs-toggle.is-after i{transform:translateX(100%)}
+.cs-swap__list{border-top:1px solid var(--cs-ink)}
+.cs-swap__row{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:26px 0;border-bottom:1px solid var(--cs-line)}
+.cs-swap__row b{font-family:var(--cs-serif);font-size:32px;font-weight:400;line-height:1}
+.cs-swap__row h3{font-size:13px;color:var(--cs-g2);font-weight:600;letter-spacing:.02em}
+.cs-swap__msg{margin-top:10px;font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:-.02em;line-height:1.45;transition:opacity .25s,transform .25s}
+.cs-swap__msg.is-before{color:var(--cs-g3);text-decoration:line-through;text-decoration-thickness:1px}
+.cs-swap__msg.is-fade{opacity:0;transform:translateY(8px)}
+@media(max-width:900px){.cs-swap{grid-template-columns:1fr}}
+
+/* @component traits : 강점 카드 5개 (근거 링크 포함) */
+.cs-traits{display:grid;grid-template-columns:repeat(var(--cs-cols,5),1fr);border-top:1px solid #fff;margin-top:56px}
+.cs-trait{padding:30px 24px 30px;border-right:1px solid var(--cs-line-d);min-height:420px;display:flex;flex-direction:column}
+.cs-trait:last-child{border-right:0}
+.cs-trait__n{font-family:var(--cs-serif);font-style:italic;font-size:22px;color:var(--cs-g3)}
+.cs-trait h3{font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.4;margin:44px 0 14px}
+.cs-trait p{font-size:14px;color:var(--cs-g3);line-height:1.75}
+.cs-trait__proof{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:14px;font-size:13px}
+.cs-trait__proof svg{width:40px;height:40px}
+.cs-trait__proof a,.cs-trait__proof span{align-self:flex-start;line-height:1.5}
+.cs-trait__proof a{border-bottom:1px solid var(--cs-line-d);padding-bottom:2px;transition:border-color .3s}
+.cs-trait__proof a:hover{border-color:#fff}
+.cs-trait__proof span{color:var(--cs-g3)}
+@media(max-width:1100px){.cs-traits{grid-template-columns:repeat(2,1fr)}.cs-trait{border-bottom:1px solid var(--cs-line-d);min-height:auto}.cs-trait:nth-child(2n){border-right:0}.cs-trait h3{margin-top:24px}}
+@media(max-width:600px){.cs-traits{grid-template-columns:1fr}.cs-trait{border-right:0}}
+
+/* @component frame : 마우스를 올리면 테두리가 네 변을 따라 그려지는 강조 */
+.cs-frame{position:relative;--cs-fw:1px;--cs-fc:#fff}
+.cs-frame::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(var(--cs-fc),var(--cs-fc)) left top/0 var(--cs-fw) no-repeat,
+    linear-gradient(var(--cs-fc),var(--cs-fc)) right top/var(--cs-fw) 0 no-repeat,
+    linear-gradient(var(--cs-fc),var(--cs-fc)) right bottom/0 var(--cs-fw) no-repeat,
+    linear-gradient(var(--cs-fc),var(--cs-fc)) left bottom/var(--cs-fw) 0 no-repeat;
+  transition:background-size .55s var(--cs-ease)}
+.cs-frame:hover::after,.cs-frame:focus-within::after{background-size:100% var(--cs-fw),var(--cs-fw) 100%,100% var(--cs-fw),var(--cs-fw) 100%}
+
+/* @component draw : 선이 그려지며 나타나는 아이콘 (각 path에 pathLength="1") */
+.cs-draw{fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.cs-js .cs-draw path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s var(--cs-ease)}
+.cs-js .is-in .cs-draw path{stroke-dashoffset:0}
+.cs-draw path:nth-child(2){transition-delay:.15s}.cs-draw path:nth-child(3){transition-delay:.3s}.cs-draw path:nth-child(4){transition-delay:.45s}
+.cs-frame:hover .cs-draw path{animation:cs-redraw 1.1s var(--cs-ease)}
+@keyframes cs-redraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+
+/* @component ledger : 탭으로 나뉜 프로젝트 목록 */
+.cs-tabs{display:flex;gap:4px;border-bottom:1px solid var(--cs-line);flex-wrap:wrap}
+.cs-tabs button{padding:14px 20px;font-size:15px;font-weight:600;color:var(--cs-g2);position:relative}
+.cs-tabs button[aria-selected="true"]{color:var(--cs-ink)}
+.cs-tabs button[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--cs-ink)}
+.cs-ledger__row{display:grid;grid-template-columns:130px 1.1fr 1.5fr 110px;gap:24px;padding:30px 0;border-bottom:1px solid var(--cs-line);align-items:start;transition:padding .4s var(--cs-ease)}
+.cs-ledger__row:hover{padding-left:14px}
+.cs-ledger__row time{font-size:14px;font-weight:600;color:var(--cs-g2);font-variant-numeric:tabular-nums;padding-top:4px}
+.cs-ledger__row h3{font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:-.025em;line-height:1.35}
+.cs-ledger__row h3 small{display:block;font-size:13px;color:var(--cs-g2);font-weight:500;margin-top:6px;letter-spacing:0}
+.cs-ledger__row p{font-size:15px;color:var(--cs-g2);line-height:1.75}
+.cs-ledger__row p a{color:var(--cs-ink);border-bottom:1px solid currentColor;white-space:nowrap}
+.cs-ledger__key{font-family:var(--cs-serif);font-style:italic;font-size:17px;text-align:right;padding-top:2px}
+.cs-ledger__key .cs-tr{justify-items:end}
+@media(max-width:900px){.cs-ledger__row{grid-template-columns:1fr;gap:6px}.cs-ledger__key{text-align:left}.cs-ledger__key .cs-tr{justify-items:start}}
+
+/* @component ai : AI와 일하는 방식 (순환 흐름 · 역할 나누기 · 설명 3단 · 사용량) */
+.cs-loop{display:flex;flex-wrap:wrap;margin-top:48px;border:1px solid #fff}
+.cs-loop li{flex:1;min-width:120px;text-align:center;padding:22px 10px;font-size:15px;font-weight:700;border-right:1px solid var(--cs-line-d)}
+.cs-loop li:last-child{border-right:0}
+.cs-loop li.is-key{background:#fff;color:var(--cs-black)}
+.cs-loop li small{display:block;font-family:var(--cs-serif);font-style:italic;font-weight:400;font-size:15px;color:var(--cs-g3);margin-top:4px}
+.cs-loop li.is-key small{color:var(--cs-g2)}
+.cs-split{display:grid;grid-template-columns:1fr 1fr;margin-top:56px;border-top:1px solid var(--cs-line-d)}
+.cs-split>div{padding:30px 32px 30px 0}
+.cs-split>div+div{padding-left:32px;border-left:1px solid var(--cs-line-d)}
+.cs-split h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.cs-split h3 .cs-it{font-size:20px;color:var(--cs-g3);margin-left:8px}
+.cs-split ul{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.cs-split li{font-size:14px;padding:8px 14px;border:1px solid var(--cs-line-d);border-radius:999px}
+.cs-split>div+div li{background:#fff;color:var(--cs-black);border-color:#fff}
+.cs-cols{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--cs-line-d)}
+.cs-cols article{padding:32px 28px 8px 0}
+.cs-cols article+article{padding-left:28px;border-left:1px solid var(--cs-line-d)}
+.cs-cols__n{font-family:var(--cs-serif);font-size:44px;line-height:1}
+.cs-cols h3{font-size:21px;font-weight:700;margin:22px 0 12px;letter-spacing:-.02em}
+.cs-cols p{font-size:15px;color:var(--cs-g3);line-height:1.75}
+.cs-usage{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid #fff}
+.cs-usage>div{padding:26px 24px 0 0}
+.cs-usage>div+div{padding-left:24px;border-left:1px solid var(--cs-line-d)}
+.cs-usage strong{display:block;font-size:clamp(44px,5vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.cs-usage strong small{font-size:.34em;font-weight:700;margin-left:6px;letter-spacing:-.02em}
+.cs-usage span{display:block;margin-top:12px;font-size:14px;color:var(--cs-g3)}
+.cs-usage__note{margin-top:18px;font-size:12px;color:var(--cs-g2);letter-spacing:.04em}
+.cs-quote{margin-top:72px;font-size:clamp(22px,2.4vw,34px);font-weight:600;line-height:1.5;letter-spacing:-.03em;max-width:980px}
+.cs-quote .cs-light{font-weight:300}
+@media(max-width:900px){.cs-cols{grid-template-columns:1fr}.cs-cols article+article{padding-left:0;border-left:0;border-top:1px solid var(--cs-line-d)}}
+@media(max-width:800px){.cs-split,.cs-usage{grid-template-columns:1fr}.cs-split>div+div,.cs-usage>div+div{padding-left:0;border-left:0;border-top:1px solid var(--cs-line-d)}.cs-usage>div+div{padding-top:22px;margin-top:22px}}
+
+/* @component story : 스크롤에 따라 단어가 채워지는 문장 */
+.cs-story{font-size:clamp(28px,4vw,56px);font-weight:700;line-height:1.35;letter-spacing:-.04em}
+.cs-story span{color:var(--cs-g4);transition:color .5s}
+.cs-story span.is-on{color:var(--cs-ink)}
+
+/* @component sort : 흩어진 업무 조각이 여섯 단계로 정리되는 보드 */
+.cs-sort{margin-top:88px}
+.cs-sort__head{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid var(--cs-ink);padding-top:18px}
+.cs-sort__head p{font-family:var(--cs-serif);font-style:italic;font-size:26px}
+.cs-sort__toggle{font-size:13px;font-weight:600;border:1px solid var(--cs-ink);border-radius:999px;padding:8px 16px;transition:background .3s,color .3s}
+.cs-sort__toggle:hover{background:var(--cs-ink);color:var(--cs-paper)}
+.cs-sort__board{--p:1;position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-top:32px;min-height:240px}
+.cs-sort__col{padding:0 12px 16px;border-left:1px solid var(--cs-line);display:flex;flex-direction:column;gap:10px}
+.cs-sort__col:first-child{border-left:0;padding-left:0}
+.cs-sort__col h3{font-size:14px;font-weight:700;padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid var(--cs-line);opacity:calc(.25 + .75 * var(--p))}
+.cs-sort__col h3 span{display:block;font-family:var(--cs-serif);font-style:italic;font-weight:400;font-size:18px;color:var(--cs-g2)}
+.cs-sort__chip{position:relative;z-index:1;display:block;font-size:14px;font-weight:600;padding:10px 12px;border:1px solid var(--cs-ink);border-radius:999px;background:var(--cs-paper);text-align:center;white-space:nowrap;will-change:transform;transition:background .4s,color .4s}
+.cs-sort.is-done .cs-sort__chip{background:var(--cs-ink);color:var(--cs-paper)}
+.cs-sort.is-anim .cs-sort__chip{transition:transform 1s var(--cs-ease),background .4s,color .4s}
+.cs-sort__end{margin-top:44px;font-size:clamp(22px,2.4vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.45}
+@media(max-width:1100px){.cs-sort__board{grid-template-columns:repeat(3,1fr);row-gap:28px}.cs-sort__col:nth-child(4){border-left:0;padding-left:0}}
+@media(max-width:600px){.cs-sort__board{grid-template-columns:repeat(2,1fr)}.cs-sort__col:nth-child(odd){border-left:0;padding-left:0}.cs-sort__col:nth-child(even){border-left:1px solid var(--cs-line);padding-left:12px}}
+
+/* @component ticker : 하단에 흐르는 대형 문구 */
+.cs-ticker{overflow:hidden;padding:clamp(60px,8vw,110px) 0;border-top:1px solid var(--cs-line)}
+.cs-ticker__track{display:flex;width:max-content;animation:cs-slide 40s linear infinite}
+.cs-ticker__track span{font-size:clamp(64px,10vw,168px);font-weight:800;letter-spacing:-.05em;white-space:nowrap;padding-right:.5em;line-height:1}
+.cs-ticker__track span:nth-child(even){font-family:var(--cs-serif);font-style:italic;font-weight:400;color:transparent;-webkit-text-stroke:1px var(--cs-ink);letter-spacing:-.02em}
+@keyframes cs-slide{to{transform:translateX(-50%)}}
+
+/* @component sign : 연락 섹션 */
+.cs-sign__title{font-size:clamp(44px,7vw,120px);font-weight:800;letter-spacing:-.055em;line-height:1}
+.cs-sign__title .cs-it{font-weight:400;letter-spacing:-.02em}
+.cs-sign__links{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #fff}
+.cs-sign__links a{padding:28px 24px 28px 0;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--cs-line-d);transition:padding .4s var(--cs-ease)}
+.cs-sign__links a+a{padding-left:24px}
+.cs-sign__links a:last-child{border-right:0}
+.cs-sign__links a:hover{padding-left:34px}
+.cs-sign__links small{font-size:12px;letter-spacing:.14em;color:var(--cs-g3)}
+.cs-sign__links strong{font-size:clamp(18px,1.7vw,24px);font-weight:600;letter-spacing:-.01em;word-break:break-all}
+@media(max-width:800px){.cs-sign__links{grid-template-columns:1fr}.cs-sign__links a,.cs-sign__links a+a{padding-left:0;border-right:0;border-bottom:1px solid var(--cs-line-d)}}
+
+/* @component footer : 바닥글 */
+.cs-foot{background:var(--cs-black);color:var(--cs-g2);font-size:13px;border-top:1px solid var(--cs-line-d)}
+.cs-foot .cs-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px;padding-bottom:28px}
+
+/* @component motion : 움직임 줄이기 설정 대응 */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .cs-art-route .cs-art-route__line{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<a class="cs-skip" href="#about">본문 바로가기</a>
+
+<header class="cs-mast">
+  <div class="cs-wrap">
+    <a href="#top" class="cs-logo cs-logo--script" aria-label="조성신, 처음으로">choseongshin</a>
+    <nav class="cs-nav" aria-label="주요 메뉴">
+      <a href="#about"><span data-ko="소개">About</span></a>
+      <a href="#career"><span data-ko="경력">Career</span></a>
+      <a href="#cases"><span data-ko="사례">Cases</span></a>
+      <a href="#projects"><span data-ko="프로젝트">Projects</span></a>
+      <a href="#ai"><span data-ko="AI 활용">AI</span></a>
+    </nav>
+    <div class="cs-mast__tools">
+      <button class="cs-theme" type="button" aria-label="화면 모드 바꾸기" data-cs-theme-toggle></button>
+      <a href="#contact" class="cs-pill"><span data-ko="연락하기">Contact</span></a>
+      <button class="cs-burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="cs-drawer" data-cs-drawer-open><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+<nav class="cs-drawer" id="cs-drawer" aria-label="모바일 메뉴" aria-hidden="true">
+  <button class="cs-drawer__close" type="button" aria-label="메뉴 닫기" data-cs-drawer-close>✕</button>
+  <a href="#about"><span data-ko="소개">About</span></a><a href="#career"><span data-ko="경력">Career</span></a><a href="#cases"><span data-ko="사례">Cases</span></a><a href="#strengths"><span data-ko="강점">Strengths</span></a><a href="#projects"><span data-ko="프로젝트">Projects</span></a><a href="#ai"><span data-ko="AI 활용">AI</span></a><a href="#contact"><span data-ko="연락">Contact</span></a>
+</nav>
+
+<nav class="cs-folio" aria-label="섹션 이동" data-cs-folio-nav></nav>
+
+<main>
+  <!-- 00 첫 화면 -->
+  <section class="cs-cover" id="top" data-cs-folio="Home" data-cs-cover="auto">
+    <div class="cs-cover__pin">
+      <div class="cs-cover__type">
+        <div class="cs-wrap">
+          <div class="cs-cover__meta"><span data-ko="포트폴리오 — 브랜드 마케터" data-cs-flip="0">PORTFOLIO — BRAND MARKETER</span><span>2017 — 2026</span></div>
+          <p class="cs-cover__title">
+            <span class="cs-sr">브랜드를 증명하는 문장. Words that prove the brand.</span>
+            <span aria-hidden="true">
+              <span class="cs-cover__row"><span data-ko="브랜드를" data-cs-flip="0">Words</span><span class="cs-cover__lens"></span><span data-ko="" data-cs-flip="0">that</span></span>
+              <span class="cs-cover__row"><span data-ko="증명하는" data-ko-class="cs-light" data-cs-flip="1"><span class="cs-it">prove</span> the</span></span>
+              <span class="cs-cover__row"><span data-ko="문장." data-cs-flip="2">brand.</span></span>
+            </span>
+          </p>
+        </div>
+        <div class="cs-cover__foot">
+          <div class="cs-wrap">
+            <div><strong>조성신</strong><br>브랜드 마케터 · 웹 기획자 · 데이터 실무자</div>
+            <div class="cs-cue" aria-hidden="true"><span data-ko="스크롤" data-cs-flip="2">SCROLL</span> <i></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-cover__sheet">
+        <div class="cs-wrap">
+          <div class="cs-cover__kicker"><span data-ko="8년의 실무 기록">Eight years of practice</span></div>
+          <h1>복잡한 문제를 정리하고,<br><span class="cs-light">결과물로</span> 증명합니다</h1>
+          <p>홍보와 콘텐츠에서 시작해 웹 기획, 데이터, AI 활용으로 일을 넓혀 왔습니다. 필요한 정보를 모으고, 실행 기준을 세우고, 화면과 문서로 구체화합니다.</p>
+          <div class="cs-chips"><span>홍보·콘텐츠</span><span>행사</span><span>웹 기획</span><span>데이터</span><span>AI 활용</span></div>
+          <div class="cs-cover__cta" data-cs-cover-interactive>
+            <a class="cs-btn cs-btn--solid" href="#cases">문제 해결 사례 보기 <span aria-hidden="true">→</span></a>
+            <a class="cs-btn cs-btn--ghost" href="#contact">연락하기</a>
+          </div>
+        </div>
+        <nav class="cs-index" aria-label="강점 바로가기" data-cs-cover-interactive>
+          <a href="#strengths">구조로 정리하기 <em>01</em></a>
+          <a href="#strengths">직접 만들어 확인하기 <em>02</em></a>
+          <a href="#strengths">자료를 판단 정보로 <em>03</em></a>
+          <a href="#strengths">읽는 사람에 맞게 <em>04</em></a>
+          <a href="#strengths">끝까지 정리하기 <em>05</em></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 소개 -->
+  <section class="cs-chapter" id="about" data-cs-folio="About">
+    <div class="cs-wrap cs-spread">
+      <div class="cs-marker"><sup>01</sup><h2>시작<small>About</small></h2></div>
+      <div>
+        <div class="cs-about">
+          <div>
+            <p class="cs-lede cs-rise"><span class="cs-mask"><span>눈에 띄는 문장보다</span></span><span class="cs-mask"><span><span class="cs-light">근거 있는</span> 문장을 씁니다.</span></span></p>
+            <p class="cs-body cs-rise cs-d1">PR 에이전시에서 공공 입찰을 수주해 현장을 뛰었고, 공유오피스에서 공간을 직접 촬영하고 알렸습니다. UX 컨설팅사에서는 다양한 고객사의 웹 구축과 운영을 프로젝트 관리자(PM)로 이끌었습니다. 데이터 기반 서비스 기획을 거쳐, 지금은 케이플러스에서 브랜딩 개선을 맡고 있습니다.</p>
+          </div>
+          <figure class="cs-portrait cs-tr-host cs-rise cs-d2">
+            <!-- 사진을 넣으려면: <img src="profile.jpg" alt="조성신 프로필 사진"> -->
+            <span class="cs-portrait__mono" aria-hidden="true">c.s.</span>
+            <figcaption><span data-ko="조성신">choseongshin</span></figcaption>
+          </figure>
+        </div>
+        <dl class="cs-facts cs-rise">
+          <div class="cs-tr-host"><dt><span data-ko="역할">ROLE</span></dt><dd>브랜드 마케터<br>웹 기획 · 프로젝트 관리</dd></div>
+          <div class="cs-tr-host"><dt><span data-ko="경력">CAREER</span></dt><dd>2017 – 현재<br>7개 조직 · 실무 8년</dd></div>
+          <div class="cs-tr-host"><dt><span data-ko="분야">FIELD</span></dt><dd>홍보 · 행사 · 콘텐츠<br>안내 문구 · 검색 대응</dd></div>
+          <div class="cs-tr-host"><dt><span data-ko="도구">TOOLS</span></dt><dd>ChatGPT · Claude Code<br>OpenAI Codex · Notion</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 숫자 · 03 가치 -->
+  <section class="cs-chapter cs-chapter--flush" id="record" data-cs-folio="Record">
+    <div class="cs-wrap cs-spread">
+      <div class="cs-marker"><sup>02</sup><h2>경험<small>Record</small></h2></div>
+      <div>
+        <div class="cs-tally">
+          <div class="cs-tally__cell cs-tr-host cs-rise"><em><span data-ko="문의율">Inquiry rate</span></em><strong data-cs-count="200">200<small>%</small></strong><p>리플렉션 인하우스 브랜드 운영으로 달성한 연간 문의율<cite>사내 집계 기준</cite></p></div>
+          <div class="cs-tally__cell cs-tr-host cs-rise cs-d1"><em><span data-ko="성장기">Growth period</span></em><strong data-cs-count="3">3<small>배</small></strong><p>리플렉션 재직 기간 회사 매출 21억(2019) → 67억(2023)<cite>출처: NICE평가정보 (사람인 기업정보)</cite></p></div>
+          <div class="cs-tally__cell cs-tr-host cs-rise"><em><span data-ko="행사 유치">Events</span></em><strong data-cs-count="10">10<small>+</small></strong><p>공유오피스 대형 행사 유치 (해커톤 · 포럼 · 설명회)</p></div>
+          <div class="cs-tally__cell cs-tr-host cs-rise cs-d1"><em><span data-ko="웹접근성">Accessibility</span></em><strong data-cs-count="4">4<small>건</small></strong><p>국/영문 × PC/모바일 웹접근성 품질인증</p></div>
+        </div>
+
+        <div class="cs-acrostic">
+          <div class="cs-marker cs-marker--inline" style="margin-bottom:28px"><sup>03</sup><h2>가치<small>Values</small></h2></div>
+          <p class="cs-acrostic__title cs-rise">P.R.O.V.E — <span class="cs-it" data-ko="일하는 방식">how I work</span></p>
+          <ul class="cs-acrostic__list">
+            <li class="cs-acrostic__item cs-tr-host cs-rise"><b>P</b><h3>구조부터<span><span data-ko="틀부터 짠다">Plan the frame</span></span></h3><p>복잡한 문제일수록 먼저 구조와 기준을 세웁니다. 메뉴 구조(IA)·작업 일정표(WBS)·화면설계서가 제 출발점입니다.</p></li>
+            <li class="cs-acrostic__item cs-tr-host cs-rise"><b>R</b><h3>기록으로 남긴다<span><span data-ko="모두 기록한다">Record everything</span></span></h3><p>오류와 실패를 숨기지 않고 다음 개선 기준으로 남깁니다. 매뉴얼 v0.1이 v4.0이 되기까지.</p></li>
+            <li class="cs-acrostic__item cs-tr-host cs-rise"><b>O</b><h3>현장으로 간다<span><span data-ko="현장에 나간다">Out in the field</span></span></h3><p>현장에서 사람을 만나 관계를 만듭니다. 기자·파트너·셀러와 직접 대면해 왔습니다.</p></li>
+            <li class="cs-acrostic__item cs-tr-host cs-rise"><b>V</b><h3>근거로 검증한다<span><span data-ko="데이터로 확인한다">Verify with data</span></span></h3><p>결과보다 근거와 재현 가능성을 봅니다. AI 결과물도 출처와 핵심 수치를 확인한 뒤 씁니다.</p></li>
+            <li class="cs-acrostic__item cs-tr-host cs-rise"><b>E</b><h3>쉬운 말로 옮긴다<span><span data-ko="사람을 위한 쉬운 말">Easy words for people</span></span></h3><p>브랜드의 언어를 고객의 언어로 옮기고, 다음 사람이 이어받을 수 있게 정리합니다.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 경력 -->
+  <section class="cs-chapter cs-ink" id="career" data-cs-folio="Career">
+    <div class="cs-wrap" data-cs-reel>
+      <div class="cs-head">
+        <div class="cs-marker cs-marker--inline"><sup>04</sup><h2>커리어<small>Timeline</small></h2></div>
+        <p class="cs-lede cs-rise">홍보에서 시작해 콘텐츠, 웹 기획, <span class="cs-light">데이터</span>로.</p>
+      </div>
+      <div class="cs-reel__tabs" role="tablist" aria-label="경력 선택">
+        <button type="button" role="tab">라이징팝스</button><button type="button" role="tab">마이워크스페이스</button><button type="button" role="tab">리플렉션UXC</button><button type="button" role="tab">엑티브아이티</button><button type="button" role="tab">메가</button><button type="button" role="tab">IMI</button><button type="button" role="tab">케이플러스</button>
+      </div>
+      <div class="cs-gauge">
+        <span class="cs-gauge__n">01</span><span class="cs-gauge__bar"><span></span></span><span class="cs-gauge__n cs-gauge__n--total">07</span>
+        <div class="cs-gauge__btns"><button type="button" data-step="-1" aria-label="이전 경력">←</button><button type="button" data-step="1" aria-label="다음 경력">→</button></div>
+      </div>
+      <div class="cs-reel__view">
+        <div class="cs-reel__track">
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 1 라이징팝스"><div class="cs-reel__no">01</div><time>2017.05 – 2018.04 · 1년</time><h3>라이징팝스</h3><div class="cs-reel__role">PR 에이전시 · 홍보 대리</div>
+            <p class="cs-reel__text">공공 입찰 제안서 작성부터 수주, 현장 운영, 성과 보고까지 처음부터 끝까지 경험. 지역 마켓, 공공디자인 사업, 공공기관 광고공모전 등 사진·콘텐츠·행사·광고를 몸으로 익힌 시기.</p>
+            <div class="cs-tags"><span>공공입찰 낙찰 1건</span><span>성과보고서 3종</span><span>공공디자인 5개 대상지</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 2 마이워크스페이스"><div class="cs-reel__no">02</div><time>2017.01 – 2017.05 · 2018.05 – 2019.03</time><h3>마이워크스페이스</h3><div class="cs-reel__role">공유오피스 · 홍보/운영</div>
+            <p class="cs-reel__text">신규 공간 오픈을 인테리어 공사 기록부터 오프닝 파티까지 직접 런칭. 공간 사진·VR 투어 제작, 행사 유치, 키워드 광고 데이터 운영까지 인하우스 마케팅 전 영역 수행.</p>
+            <div class="cs-tags"><span>주요 언론사 홍보</span><span>대형 행사 10건+</span><span>협약·MOU 3건</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 3 리플렉션UXC"><div class="cs-reel__no">03</div><time>2020.03 – 2024.11 · 4년 9개월</time><h3>리플렉션UXC</h3><div class="cs-reel__role">선임연구원 · 웹 기획 / 프로젝트 관리(PM·PMO)</div>
+            <p class="cs-reel__text">대기업·중견기업 웹 구축과 운영을 기획·관리. 인하우스 브랜드 운영으로 연간 문의율 200% 달성. 재직 기간 회사 매출 21억(2019) → 67억(2023) 성장.</p>
+            <div class="cs-tags"><span>문의율 200%</span><span>웹접근성 인증 4건</span><span>안내 문구 가이드 12차</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 4 엑티브아이티"><div class="cs-reel__no">04</div><time>2025.03 – 2025.05 · 3개월</time><h3>엑티브아이티</h3><div class="cs-reel__role">마케팅</div>
+            <p class="cs-reel__text">짧지만 기록이 남은 시간. 보도자료 4건 기획·작성, 3개 매체 게재와 기자 응대까지 직접 진행. 블로그 체험단 가이드라인 제작, 이미지 설명(ALT) 등 검색 노출 개선.</p>
+            <div class="cs-tags"><span>보도자료 4건</span><span>게재 매체 3곳</span><span>키워드 노출 20+</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 5 메가"><div class="cs-reel__no">05</div><time>2025.08 – 2025.11 · 4개월</time><h3>메가</h3><div class="cs-reel__role">광고 PD</div>
+            <p class="cs-reel__text">보험 광고 유튜브 콘텐츠를 기획부터 촬영·편집까지 1인 제작.</p>
+            <div class="cs-tags"><span>기획</span><span>촬영</span><span>편집</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 6 IMI"><div class="cs-reel__no">06</div><time>2026.04 – 2026.08 · 5개월</time><h3>IMI (아이템매니아)</h3><div class="cs-reel__role">매니저 · 데이터 기반 서비스 기획</div>
+            <p class="cs-reel__text">사업 기획, 화면 구성 초안(와이어프레임), 검색 개선안 작성 등 데이터 기반 서비스 기획 업무 수행. 사내 AI 도구 도입·운영과 비용 관리 병행.</p>
+            <div class="cs-tags"><span>서비스 기획</span><span>와이어프레임</span><span>사내 AI 도구 운영</span></div></article>
+          <article class="cs-reel__card" tabindex="0" aria-label="경력 7 케이플러스, 재직 중"><div class="cs-reel__no">07</div><time>2026.09 – 현재</time><h3>케이플러스<span class="cs-reel__now"><span data-ko="재직 중">NOW</span></span></h3><div class="cs-reel__role">마케팅팀 과장 · 브랜딩 개선을 위해 합류</div>
+            <p class="cs-reel__text">생활서비스와 보험 사업을 함께 운영하는 회사에서 브랜드 정체성 정리와 검색·채널 유입 구조 설계 담당.</p>
+            <div class="cs-tags"><span>브랜드 정체성 정리</span><span>검색 유입 구조</span><span>채널 통합</span></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 대표 사례 -->
+  <section class="cs-chapter" id="cases" data-cs-folio="Cases">
+    <div class="cs-wrap" data-cs-stage>
+      <div class="cs-head">
+        <div class="cs-marker cs-marker--inline"><sup>05</sup><h2>대표 사례<small>Cases</small></h2></div>
+        <p class="cs-lede cs-rise"><span class="cs-light">처음부터 끝까지,</span><br>직접 완성한 세 장면.</p>
+      </div>
+      <div class="cs-stage">
+        <article class="cs-stage__scene is-on" aria-label="사례 1">
+          <div class="cs-stage__art cs-tr-host">
+            <svg class="cs-art-rings" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="190"/></svg>
+            <span class="cs-stage__no">01</span><span class="cs-stage__cap"><span data-ko="공공 홍보 · 2017">PUBLIC PR · 2017</span></span>
+          </div>
+          <div class="cs-stage__copy">
+            <div class="cs-stage__tag"><span data-ko="라이징팝스">RISINGPOPS</span> — 공공기관</div>
+            <h3>공공 입찰 한 건,<br><span class="cs-light">제안부터 보고까지</span></h3>
+            <p class="cs-body">지역 마켓 홍보·교육 운영 용역. 제안서를 쓰고 종합평가로 낙찰받아 현장 운영, 셀러 교육, 블로그·인스타그램·홈페이지 채널별 성과 보고까지 직접 마무리했습니다. 셀러 대상 블로그 운영 교육 강의안도 본인 명의로 제작했습니다.</p>
+            <ol class="cs-steps"><li><span>i</span>입찰 제안서 작성</li><li><span>ii</span>종합평가 낙찰</li><li><span>iii</span>현장 운영 · 셀러 SNS 교육</li><li><span>iv</span>채널별 성과보고서 3종</li></ol>
+          </div>
+        </article>
+        <article class="cs-stage__scene" aria-label="사례 2">
+          <div class="cs-stage__art cs-tr-host">
+            <svg class="cs-art-grid" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g data-cs-art="grid"></g></svg>
+            <span class="cs-stage__no">02</span><span class="cs-stage__cap"><span data-ko="웹 구축 관리 · 2024">WEB PM · 2024</span></span>
+          </div>
+          <div class="cs-stage__copy">
+            <div class="cs-stage__tag"><span data-ko="리플렉션UXC">REFLECTION UXC</span> — 기업 고객사</div>
+            <h3>홈페이지 구축을<br><span class="cs-light">총괄</span>하다</h3>
+            <p class="cs-body">제안·수주부터 메뉴 구조(IA), 작업 일정표(WBS), 화면설계서, 국/영문 이원 관리, 개발 산출물과 운영 매뉴얼까지. 기획자이자 프로젝트 관리자로 구축 전 과정을 책임졌습니다.</p>
+            <ol class="cs-steps"><li><span>i</span>제안 · 수주</li><li><span>ii</span>메뉴 구조 · 작업 일정표</li><li><span>iii</span>화면설계서 — 고객용 7챕터 + 관리자용 4챕터</li><li><span>iv</span>개발 산출물 · 운영 매뉴얼</li></ol>
+            
+          </div>
+        </article>
+        <article class="cs-stage__scene" aria-label="사례 3">
+          <div class="cs-stage__art cs-tr-host">
+            <svg class="cs-art-route" viewBox="0 0 400 400" preserveAspectRatio="xMinYMax slice" aria-hidden="true">
+              <path class="cs-art-route__line" pathLength="1" d="M40 240 C120 240 150 280 220 280"/>
+              <path class="cs-art-route__line" pathLength="1" d="M40 320 C120 320 150 280 220 280"/>
+              <path class="cs-art-route__line" pathLength="1" d="M220 280 H330"/>
+              <circle cx="40" cy="240" r="7"/><circle cx="40" cy="320" r="7"/><circle cx="220" cy="280" r="7"/><circle class="is-end" cx="330" cy="280" r="9"/>
+            </svg>
+            <span class="cs-stage__no">03</span><span class="cs-stage__cap"><span data-ko="프리랜서 · 2026">FREELANCE · 2026</span></span>
+          </div>
+          <div class="cs-stage__copy">
+            <div class="cs-stage__tag"><span data-ko="프리랜서">FREELANCE</span> — 산전·산후 관리 센터</div>
+            <h3>영업부터 계약까지,<br><span class="cs-light">혼자</span> 수주하다</h3>
+            <p class="cs-body">산전·산후 관리 서비스를 대상으로 단독 영업해 마케팅 컨설팅 계약을 맺었습니다. 경쟁 제안의 월 정액 대행 대신, 흩어진 자산을 먼저 정리하고 소액 광고 소재로 반응을 확인하는 프로젝트 단위 계약을 제안해 차별화했습니다. 사이트 리뉴얼과 예약·문의 동선 재설계까지 함께 맡았습니다.</p>
+            <ol class="cs-steps"><li><span>i</span>단독 영업 · 경쟁 제안 분석</li><li><span>ii</span>프로젝트 단위 계약 제안 · 체결</li><li><span>iii</span>자산 정리 · 유입 경로 추적 설정</li><li><span>iv</span>사이트 리뉴얼 · 예약 동선 연결</li></ol>
+          </div>
+        </article>
+      </div>
+      <div class="cs-gauge cs-gauge--light">
+        <span class="cs-gauge__n">01</span><span class="cs-gauge__bar"><span></span></span><span class="cs-gauge__n cs-gauge__n--total">03</span>
+        <div class="cs-gauge__btns">
+          <button type="button" data-act="prev" aria-label="이전 사례">←</button>
+          <button type="button" data-act="toggle" aria-label="자동 넘김 멈춤">❚❚</button>
+          <button type="button" data-act="next" aria-label="다음 사례">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 안내 문구 -->
+  <section class="cs-chapter cs-chapter--flush" id="ux" data-cs-folio="UX Writing">
+    <div class="cs-wrap cs-spread">
+      <div class="cs-marker"><sup>06</sup><h2>글쓰기<small>UX Writing</small></h2></div>
+      <div class="cs-swap" data-cs-swap>
+        <div>
+          <p class="cs-lede cs-rise">고객이 한 번에<br><span class="cs-light">이해하는</span> 문장</p>
+          <p class="cs-body cs-rise cs-d1" style="margin-top:24px">금융 서비스 리뉴얼(2021)에서 메시지·이메일 작성 가이드를 12차례 다듬어 문자·메일·알림톡 문구를 전면 개편했습니다. 버튼으로 전후를 비교해 보세요.</p>
+          <div class="cs-toggle is-after cs-rise cs-d2" role="group" aria-label="문장 비교"><i></i><button type="button" data-mode="before" aria-pressed="false">바꾸기 전</button><button type="button" data-mode="after" aria-pressed="true">바꾼 후</button></div>
+        </div>
+        <div class="cs-swap__list" aria-live="polite">
+          <div class="cs-swap__row cs-rise"><b>1</b><div><h3>한자어 표현 → 우리말로 간결하게</h3><div class="cs-swap__msg" data-before="이용내역이 존재하지 않습니다" data-after="이용내역이 없습니다">이용내역이 없습니다</div></div></div>
+          <div class="cs-swap__row cs-rise cs-d1"><b>2</b><div><h3>회사 관점 → 고객 관점</h3><div class="cs-swap__msg" data-before="최대 5영업일 이내" data-after="최대 5일(평일 기준) 이내">최대 5일(평일 기준) 이내</div></div></div>
+          <div class="cs-swap__row cs-rise cs-d2"><b>3</b><div><h3>쉽고 짧은 표현</h3><div class="cs-swap__msg" data-before="변경된 연이자율이 적용되어 결제가 가능합니다" data-after="변경된 연이자율로 결제됩니다">변경된 연이자율로 결제됩니다</div></div></div>
+          <div class="cs-swap__row cs-rise cs-d3"><b>4</b><div><h3>행동과 결정을 알아보기 쉽게</h3><div class="cs-swap__msg" data-before="정보제공수집동의" data-after="정보 제공 · 수집 동의">정보 제공 · 수집 동의</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 강점 -->
+  <section class="cs-chapter cs-ink" id="strengths" data-cs-folio="Strengths">
+    <div class="cs-wrap">
+      <div class="cs-head">
+        <div class="cs-marker cs-marker--inline"><sup>07</sup><h2>강점<small>Strengths</small></h2></div>
+        <p class="cs-lede cs-rise">제가 특히 잘하는 <span class="cs-light">다섯 가지</span></p>
+      </div>
+      <div class="cs-traits">
+        <article class="cs-trait cs-frame cs-rise"><span class="cs-trait__n">01</span><h3>복잡한 요청을<br>실행 순서로 정리합니다</h3><p>목표, 사용자, 필요한 정보와 일정을 나눠 봅니다. 무엇부터 정하고 누가 무엇을 할지 문서와 화면으로 정리합니다.</p>
+          <div class="cs-trait__proof"><svg class="cs-draw" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M6 10h28"/><path pathLength="1" d="M6 20h20"/><path pathLength="1" d="M6 30h12"/></svg><a href="#cases" data-cs-scene="1">근거 — 기업 고객사 구축 총괄 →</a></div></article>
+        <article class="cs-trait cs-frame cs-rise cs-d1"><span class="cs-trait__n">02</span><h3>아이디어를<br>직접 확인할 수 있게 만듭니다</h3><p>설명만으로 판단하기 어려운 기획은 간단한 화면이나 초기 버전으로 만들어 봅니다. 직접 살펴보고 고칠 부분을 찾을 수 있게 합니다.</p>
+          <div class="cs-trait__proof"><svg class="cs-draw" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M5 8h30v20H5z"/><path pathLength="1" d="M14 34h12"/><path pathLength="1" d="M20 28v6"/><path pathLength="1" d="M17 14l8 4-4 1-1 4z"/></svg><a href="#cases" data-cs-scene="2">근거 — 관리 서비스 사이트 리뉴얼 →</a><span>이 포트폴리오도 AI와 함께 직접 만들었습니다.</span></div></article>
+        <article class="cs-trait cs-frame cs-rise cs-d2"><span class="cs-trait__n">03</span><h3>흩어진 자료를<br>판단할 정보로 바꿉니다</h3><p>자료를 모으는 데서 끝내지 않고 비교 기준과 핵심 항목을 정리합니다. 수치의 의미와 확인이 필요한 부분을 함께 보여줍니다.</p>
+          <div class="cs-trait__proof"><svg class="cs-draw" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M5 7h30L24 20v11l-8 4V20z"/></svg><a href="#projects" data-cs-tab="pr">근거 — 광고 매체별 효율 비교 · 채널별 성과보고서 →</a></div></article>
+        <article class="cs-trait cs-frame cs-rise cs-d3"><span class="cs-trait__n">04</span><h3>읽는 사람에 맞게<br>다시 씁니다</h3><p>고객에게는 이해하기 쉬운 안내를, 실무자에게는 실행할 내용을, 의사결정자에게는 핵심 쟁점을 전달합니다.</p>
+          <div class="cs-trait__proof"><svg class="cs-draw" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M6 8h28v18H18l-7 6v-6H6z"/><path pathLength="1" d="M12 15h16"/><path pathLength="1" d="M12 20h10"/></svg><a href="#ux">근거 — 안내 문구 바꾸기 전 / 후 →</a></div></article>
+        <article class="cs-trait cs-frame cs-rise cs-d4"><span class="cs-trait__n">05</span><h3>다음 사람이<br>이어갈 수 있게 마무리합니다</h3><p>진행 상황과 확인할 문제를 정리하고, 결과물과 운영 방법을 문서로 남깁니다. 담당자가 바뀌어도 일이 이어지게 합니다.</p>
+          <div class="cs-trait__proof"><svg class="cs-draw" viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M6 20h22"/><path pathLength="1" d="M22 13l7 7-7 7"/><path pathLength="1" d="M34 8v24"/></svg><a href="#projects" data-cs-tab="web">근거 — 운영 매뉴얼 v0.1 → v4.0 →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 프로젝트 -->
+  <section class="cs-chapter" id="projects" data-cs-folio="Projects">
+    <div class="cs-wrap cs-spread">
+      <div class="cs-marker"><sup>08</sup><h2>프로젝트<small>Projects</small></h2></div>
+      <div data-cs-ledger>
+        <div class="cs-tabs" role="tablist" aria-label="프로젝트 분류">
+          <button type="button" role="tab" data-key="web" aria-controls="cs-p-web" id="cs-t-web">웹 구축 · 운영</button>
+          <button type="button" role="tab" data-key="pr" aria-controls="cs-p-pr" id="cs-t-pr">PR · 행사 · 공공</button>
+          <button type="button" role="tab" data-key="side" aria-controls="cs-p-side" id="cs-t-side">사이드 · 프리랜서</button>
+          <button type="button" role="tab" data-key="etc" aria-controls="cs-p-etc" id="cs-t-etc">그 밖의 참여</button>
+        </div>
+        <div role="tabpanel" id="cs-p-web" aria-labelledby="cs-t-web">
+          <div class="cs-ledger__row cs-tr-host"><time>2024</time><h3>기업 고객사 홈페이지 구축<small>구축 총괄 · 기획 / 프로젝트 관리</small></h3><p>제안·수주, 메뉴 구조(IA), 작업 일정표(WBS), 화면설계서(고객용 7챕터 + 관리자용 4챕터), 국/영문 이원 관리, 개발 산출물·운영 매뉴얼 일체. </p><span class="cs-ledger__key"><span data-ko="11챕터">11 chapters</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2022 – 2024</time><h3>법률 서비스 고객사 연간 운영<small>운영 프로젝트 관리</small></h3><p>구축 후 1.5년 연간 운영. 월별 작업 공수 보고, 장애 대응, 클라우드·보안 인증서(SSL) 관리, 유지보수 매뉴얼 v0.1 → v4.0.</p><span class="cs-ledger__key">v4.0</span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2023</time><h3>IT 서비스 고객사 홈페이지 구축<small>구축 · 품질 관리</small></h3><p>국/영문 × PC/모바일 전체에서 웹접근성 품질인증 4건 획득.</p><span class="cs-ledger__key"><span data-ko="인증 4건">4 certs</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2021</time><h3>금융 서비스 안내 문구<small>UX 라이팅</small></h3><p>메시지·이메일 작성 가이드를 12차례 다듬고, 문자·메일·알림톡 문구를 전면 개편.</p><span class="cs-ledger__key"><span data-ko="12차례">12 rounds</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2021 – 2023</time><h3>커머스 구축·리뉴얼<small>기획 · 테스트 · 운영</small></h3><p>요구사항 정의, 화면설계, 테스트, 운영 매뉴얼까지. 누적 산출물 2,800건 이상.</p><span class="cs-ledger__key">2,800+</span></div>
+        </div>
+        <div role="tabpanel" id="cs-p-pr" aria-labelledby="cs-t-pr" hidden>
+          <div class="cs-ledger__row cs-tr-host"><time>2017</time><h3>지역 마켓 홍보·교육 운영<small>공공기관 · 공공입찰</small></h3><p>입찰 제안, 종합평가 낙찰, 셀러 대상 SNS 교육, 블로그·인스타그램·홈페이지 채널별 성과보고서 3종.</p><span class="cs-ledger__key"><span data-ko="낙찰">awarded</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2017 – 2018</time><h3>공공디자인 사업<small>공공디자인 · 아카이빙</small></h3><p>5개 대상지 공사 전 / 준공 후 아카이빙.</p><span class="cs-ledger__key"><span data-ko="5개 대상지">5 sites</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2017 – 2018</time><h3>공공기관 광고공모전<small>홍보물 제작</small></h3><p>포스터·시상보드·현수막·SNS 이벤트 소재 제작. 고객사 창립 20주년 행사 운영, 파워블로그 마케팅, 지하철 스크린도어 광고 병행.</p><span class="cs-ledger__key"><span data-ko="캠페인">campaign</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2018 – 2019</time><h3>공유오피스 행사 · 제휴<small>인하우스 마케팅</small></h3><p>해커톤, 인재 매칭 행사, 조찬 모임 등 대형 행사 10건+ 유치. 외부 파트너와 업무협약, 전략적 협약, MOU.</p><span class="cs-ledger__key"><span data-ko="행사 10건+">10+ events</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2018</time><h3>신규 공간 오픈 프로젝트<small>런칭 · 콘텐츠 · 광고 데이터</small></h3><p>인테리어 공사 12일 기록, 오프닝 파티 2회 기획·운영, 공간 사진·VR 360 투어 제작, 네이버·구글·카카오 키워드 광고 매체별 효율 비교.</p><span class="cs-ledger__key"><span data-ko="오픈">launch</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2025</time><h3>보도자료 기획 · 배포<small>엑티브아이티 · 언론 홍보</small></h3><p>보도자료 4건 기획·작성, 3개 매체 게재와 기자 응대까지 직접 진행. 네이버 키워드 20여 개 노출.</p><span class="cs-ledger__key"><span data-ko="보도자료 4건">4 releases</span></span></div>
+        </div>
+        <div role="tabpanel" id="cs-p-side" aria-labelledby="cs-t-side" hidden>
+          <div class="cs-ledger__row cs-tr-host"><time>2026</time><h3>관리 서비스 마케팅 컨설팅<small>프리랜서 · 단독 수주</small></h3><p>산전·산후 관리 센터를 대상으로 단독 영업해 계약 체결. 흩어진 자산 정리, 유입 경로 추적 설정, 사이트 리뉴얼과 예약·문의 동선 연결까지 담당.</p><span class="cs-ledger__key"><span data-ko="계약">contract</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2025 – 현재</time><h3>아파트 입주민 커뮤니티 운영<small>네이버 카페 · 약 1,300명</small></h3><p>지역 환경 이슈 관계 부서 공문 문의, 공공 데이터와 기상 데이터를 결합한 정보 페이지 기획 중.</p><span class="cs-ledger__key"><span data-ko="진행 중">in progress</span></span></div>
+        </div>
+        <div role="tabpanel" id="cs-p-etc" aria-labelledby="cs-t-etc" hidden>
+          <div class="cs-ledger__row cs-tr-host"><time>2020 – 2024</time><h3>기업 사이트<small>신규 사이트</small></h3><p>신규 사이트 검수 및 기획 참여.</p><span class="cs-ledger__key"><span data-ko="검수">review</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2020 – 2024</time><h3>기업 웹사이트<small>웹 운영</small></h3><p>웹 운영 검수.</p><span class="cs-ledger__key"><span data-ko="품질 점검">QA</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2020 – 2024</time><h3>기업 디자인 · 웹<small>디자인 · 웹</small></h3><p>고객사 XD 디자인 및 웹 프로젝트 참여.</p><span class="cs-ledger__key"><span data-ko="디자인">design</span></span></div>
+          <div class="cs-ledger__row cs-tr-host"><time>2020 – 2024</time><h3>플랫폼 서비스<small>마케팅 컨설팅</small></h3><p>부동산 중개 플랫폼 마케팅 컨설팅.</p><span class="cs-ledger__key"><span data-ko="컨설팅">consulting</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 AI -->
+  <section class="cs-chapter cs-ink" id="ai" data-cs-folio="AI Workflow">
+    <div class="cs-wrap">
+      <div class="cs-head">
+        <div class="cs-marker cs-marker--inline"><sup>09</sup><h2>AI 활용<small>Workflow</small></h2></div>
+        <p class="cs-lede cs-rise">AI에게 맡길 일과 <span class="cs-light">직접 판단할</span> 일을 나눕니다</p>
+      </div>
+      <ol class="cs-loop cs-rise" aria-label="AI와 일하는 순서">
+        <li>목표 정하기<small>Set</small></li><li>맡기기<small>Delegate</small></li><li>확인하기<small>Check</small></li><li class="is-key">고르기<small>Decide</small></li><li>기록하기<small>Log</small></li>
+      </ol>
+      <div class="cs-split cs-rise">
+        <div><h3>AI에게 맡기는 일<span class="cs-it">Delegated</span></h3><ul><li>자료 조사</li><li>비교 초안</li><li>문서 초안</li><li>표 · 데이터 정리</li><li>형식 변환</li><li>간단한 화면 코드</li></ul></div>
+        <div><h3>직접 하는 일<span class="cs-it">Owned</span></h3><ul><li>목표 설정</li><li>기준 정하기</li><li>사실 확인</li><li>예외 판단</li><li>최종 결정</li></ul></div>
+      </div>
+      <div class="cs-cols">
+        <article class="cs-rise"><div class="cs-cols__n">01</div><h3>문서·콘텐츠 제작</h3><p>보도자료·기획서·발표자료 초안을 만들고, 실무자·팀장·임원 등 보고 대상에 맞게 구조를 다시 짭니다. 하나의 기획을 PPT·Word·Notion 등 필요한 형식으로 바꿉니다.</p></article>
+        <article class="cs-rise cs-d1"><div class="cs-cols__n">02</div><h3>확인 원칙</h3><p>AI 결과물은 출처와 핵심 수치, 중요한 오류를 확인한 뒤 씁니다. 맡긴 일과 결과, 채택 여부를 기록해 다음 작업의 기준으로 삼습니다.</p></article>
+        <article class="cs-rise cs-d2"><div class="cs-cols__n">03</div><h3>AI 검색 대응</h3><p>콘텐츠가 AI 검색에서 이해되고 인용되기 쉽도록, 자주 묻는 질문 중심으로 구성하고 핵심 답을 먼저 두는 방식으로 페이지를 설계합니다.</p></article>
+      </div>
+      <div class="cs-usage cs-rise">
+        <div><strong data-cs-count="183">183<small>세션</small></strong><span>OpenAI Codex 작업 세션</span></div>
+        <div><strong data-cs-count="14.2" data-cs-dec="1">14.2<small>억 토큰</small></strong><span>OpenAI Codex 처리량</span></div>
+        <div><strong data-cs-count="2100">2,100<small>만 토큰</small></strong><span>Claude Code 처리량</span></div>
+      </div>
+      <p class="cs-usage__note">누적 사용량 · 2026년 9월 기준</p>
+      <p class="cs-quote cs-rise">“AI 도구를 써본 사람”이 아니라, AI에게 일을 맡기고 결과를 <span class="cs-it" data-ko="확인하고 고르는">check, decide</span> 하는 방식을 문서로 운영해 온 <span class="cs-light">실무자.</span></p>
+    </div>
+  </section>
+
+  <!-- 10 일하는 방식 -->
+  <section class="cs-chapter" id="process" data-cs-folio="Process">
+    <div class="cs-wrap cs-spread">
+      <div class="cs-marker"><sup>10</sup><h2>일하는 방식<small>Process</small></h2></div>
+      <div>
+        <p class="cs-story" data-cs-story>브랜드를 알리는 일의 처음과 끝. 보도자료 한 줄부터 행사 현장, 성과 보고까지 직접 완성해 왔습니다.</p>
+        <div class="cs-sort" data-cs-sort="auto">
+          <div class="cs-sort__head"><p><span data-ko="흩어진 일을, 순서로.">From chaos, to structure.</span></p><button type="button" class="cs-sort__toggle" aria-pressed="false">정리 전 보기</button></div>
+          <div class="cs-sort__board">
+            <div class="cs-sort__col"><h3><span>01</span>문제 파악</h3><span class="cs-sort__chip">요청사항</span><span class="cs-sort__chip">고객 의견</span></div>
+            <div class="cs-sort__col"><h3><span>02</span>자료 확인</h3><span class="cs-sort__chip">경쟁 정보</span><span class="cs-sort__chip">검색 데이터</span></div>
+            <div class="cs-sort__col"><h3><span>03</span>실행 설계</h3><span class="cs-sort__chip">일정</span><span class="cs-sort__chip">예산</span></div>
+            <div class="cs-sort__col"><h3><span>04</span>직접 구체화</h3><span class="cs-sort__chip">화면 구성</span><span class="cs-sort__chip">보도자료 초안</span></div>
+            <div class="cs-sort__col"><h3><span>05</span>결과 확인</h3><span class="cs-sort__chip">오류 점검</span><span class="cs-sort__chip">성과 수치</span></div>
+            <div class="cs-sort__col"><h3><span>06</span>운영과 기록</h3><span class="cs-sort__chip">운영 매뉴얼</span><span class="cs-sort__chip">결과 보고</span></div>
+          </div>
+          <p class="cs-sort__end cs-rise">복잡한 문제를 <span class="cs-light">실행 가능한 구조</span>로 만드는 것이 제 일입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-ticker" aria-hidden="true">
+    <div class="cs-ticker__track">
+      <span>알리고, 증명하다</span><span>Words that prove</span><span>알리고, 증명하다</span><span>Words that prove</span>
+      <span>알리고, 증명하다</span><span>Words that prove</span><span>알리고, 증명하다</span><span>Words that prove</span>
+    </div>
+  </div>
+
+  <!-- 11 연락 -->
+  <section class="cs-chapter cs-ink cs-sign" id="contact" data-cs-folio="Contact">
+    <div class="cs-wrap">
+      <div class="cs-marker cs-marker--inline" style="margin-bottom:40px"><sup>11</sup><h2>연락<small>Contact</small></h2></div>
+      <p class="cs-sign__title cs-rise">브랜드를 알리는 일,<br><span class="cs-it" data-ko="함께.">together.</span></p>
+      <p class="cs-body cs-rise cs-d1" style="margin-top:28px">채용 · 프로젝트 협업 · 홍보/콘텐츠 기획 문의 모두 환영합니다.</p>
+      <div class="cs-sign__links cs-rise cs-d2">
+        <a href="mailto:gangnam@kakao.com"><small><span data-ko="이메일">E-MAIL</span></small><strong>gangnam@kakao.com ↗</strong></a>
+        <a href="https://blog.naver.com/trip-life" target="_blank" rel="noopener"><small><span data-ko="블로그">BLOG</span></small><strong>blog.naver.com/trip-life ↗</strong></a>
+        <a href="#top"><small><span data-ko="맨 위로">BACK TO TOP</span></small><strong>처음으로 ↑</strong></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="cs-foot">
+  <div class="cs-wrap"><span>© 2026 choseongshin. All rights reserved.</span><span><span data-ko="브랜드 마케터 · 웹 기획자 · 데이터 실무자">Brand Marketer · Web Planner · Data Practitioner</span></span></div>
+</footer>
+
+<script>
+/* ==========================================================================
+   CS PORTFOLIO — 인터랙션 (외부 라이브러리 없음, 모든 모듈은 요소가 없으면 조용히 건너뜀)
+   ========================================================================== */
+(()=>{
+// @component helpers : 공통 함수
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const pad=n=>String(n).padStart(2,'0');
+const clamp=(v,a=0,b=1)=>Math.min(Math.max(v,a),b);
+const easeOut=p=>1-Math.pow(1-p,3);
+
+// @component theme : 화면 모드 버튼 (자동 → 밝게 → 어둡게), 선택은 브라우저에 저장
+function theme(){
+  const btn=$('[data-cs-theme-toggle]');if(!btn)return;
+  const root=document.documentElement,order=['auto','light','dark'],name={auto:'자동',light:'밝게',dark:'어둡게'};
+  const sys=matchMedia('(prefers-color-scheme: dark)');
+  const mode=()=>root.getAttribute('data-cs-theme')||'auto';
+  const paint=()=>{const m=mode(),dark=m==='dark'||(m==='auto'&&sys.matches);
+    btn.dataset.mode=m;btn.title='화면 모드: '+name[m];btn.setAttribute('aria-label','화면 모드: '+name[m]+' (누르면 바뀜)');
+    if(m!=='auto')$$('meta[name=theme-color]').forEach(x=>x.content=dark?'#151515':'#ffffff')};
+  btn.addEventListener('click',()=>{
+    const next=order[(order.indexOf(mode())+1)%order.length];
+    if(!reduce){root.classList.add('cs-theme-anim');setTimeout(()=>root.classList.remove('cs-theme-anim'),500)}
+    if(next==='auto')root.removeAttribute('data-cs-theme');else root.setAttribute('data-cs-theme',next);
+    try{next==='auto'?localStorage.removeItem('cs-theme'):localStorage.setItem('cs-theme',next)}catch(e){}
+    paint();
+  });
+  if(sys.addEventListener)sys.addEventListener('change',paint);
+  paint();
+}
+
+// @component tr : data-ko가 있는 요소를 영어/한글 두 겹으로 만든다
+function tr(){
+  $$('[data-ko]').forEach(el=>{
+    if(el.classList.contains('cs-tr'))return;
+    const en=document.createElement('span'),ko=document.createElement('span');
+    en.className='cs-tr__en';en.setAttribute('aria-hidden','true');
+    while(el.firstChild)en.appendChild(el.firstChild);
+    ko.className=('cs-tr__ko '+(el.dataset.koClass||'')).trim();ko.lang='ko';ko.textContent=el.dataset.ko;
+    el.classList.add('cs-tr');if(el.hasAttribute('data-cs-flip'))el.classList.add('cs-flip');
+    el.append(en,ko);
+  });
+}
+
+// @component masthead : 모바일 서랍 메뉴 열기/닫기
+function masthead(){
+  const btn=$('[data-cs-drawer-open]'),panel=$('#cs-drawer');if(!btn||!panel)return;
+  const close=$('[data-cs-drawer-close]',panel);
+  const set=(open,restore)=>{panel.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',open);panel.setAttribute('aria-hidden',!open);
+    if(open)close.focus();else if(restore)btn.focus({preventScroll:true})};
+  btn.addEventListener('click',()=>set(true));
+  close.addEventListener('click',()=>set(false,true));
+  $$('a',panel).forEach(a=>a.addEventListener('click',()=>set(false)));
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('is-open'))set(false,true)});
+}
+
+// @component rise : 화면에 들어오면 is-in 부여
+function rise(){
+  const els=$$('.cs-rise');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('is-in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{threshold:.14});
+  els.forEach(e=>io.observe(e));
+}
+
+// @component cover : 첫 화면 ① 영어 헤드라인이 한 줄씩 한글로 ② 헤드라인 속 창이 화면 전체로 열림
+//   data-cs-cover        : 스크롤한 만큼 진행 (기본)
+//   data-cs-cover="auto" : 조금만 스크롤해도 끝까지 자동 재생, 위로 올리면 반대로 재생 (중간에 멈추지 않음)
+function cover(){
+  const root=$('[data-cs-cover]');if(!root)return;
+  const sheet=$('.cs-cover__sheet',root),lens=$('.cs-cover__lens',root),live=$$('[data-cs-cover-interactive]',root),flips=$$('[data-cs-flip]',root),mast=$('.cs-mast');
+  const auto=root.dataset.csCover==='auto';
+  if(reduce){
+    root.classList.add('is-static');flips.forEach(el=>el.style.setProperty('--f',1));
+    if(mast&&'IntersectionObserver' in window)new IntersectionObserver(es=>mast.classList.toggle('is-past',!es[0].isIntersecting),{rootMargin:'-90px 0px 0px 0px'}).observe($('.cs-cover__type',root));
+    else if(mast)mast.classList.add('is-past');
+    return;
+  }
+  const set=(k,v)=>sheet.style.setProperty(k,v);
+  let p=0;
+  const paint=()=>{
+    flips.forEach(el=>el.style.setProperty('--f',easeOut(clamp((p-.02-(+el.dataset.csFlip)*.035)/.1)).toFixed(3)));   // 0~19%: 한 줄씩 한글로
+    const e=easeOut(clamp((p-.2)/.5)),w=lens.getBoundingClientRect(),vw=innerWidth,vh=innerHeight,mix=(a,b)=>a+(b-a)*e;   // 20~70%: 창이 열림
+    set('--t',mix(w.top/vh*100,0)+'%');set('--l',mix(w.left/vw*100,0)+'%');
+    set('--r',mix((vw-w.right)/vw*100,0)+'%');set('--b',mix((vh-w.bottom)/vh*100,0)+'%');
+    set('--rad',mix(w.height/2,0)+'px');
+    const o=clamp((p-.5)/.22);set('--o',o);
+    live.forEach(el=>el.inert=o<.6);   // 보이지 않을 때는 버튼에 초점이 가지 않도록
+    if(mast)mast.classList.toggle('is-past',p>.55);   // 이름이 보이는 첫 화면에서는 로고 숨김
+  };
+  const byScroll=()=>clamp(-root.getBoundingClientRect().top/(root.offsetHeight-innerHeight));
+  const refresh=()=>{if(!auto)p=byScroll();paint()};
+  addEventListener('resize',refresh);addEventListener('load',refresh);
+  // 글꼴이 늦게 도착하면 헤드라인 폭이 바뀌어 창 위치가 달라지므로 다시 계산
+  if(document.fonts)document.fonts.ready.then(refresh);
+  if('ResizeObserver' in window)new ResizeObserver(refresh).observe($('.cs-cover__title',root));
+  if(!auto){addEventListener('scroll',refresh,{passive:true});refresh();return}
+
+  // ---- 자동 재생 방식: 3단계(영어 → 한글 → 열린 화면), 스크롤 한 번에 한 단계 ----
+  const STOPS=[0,.2,1];   // 진행률 멈춤 지점: 영어 / 한글(여기서 멈춰 읽을 시간) / 검은 화면 열림
+  let busy=false,at=0,lockUntil=0,jumpUntil=0;
+  const top=()=>root.offsetTop,end=()=>root.offsetTop+root.offsetHeight-innerHeight;
+  const yOf=v=>top()+(end()-top())*v;
+  const go=y=>scrollTo({top:y,behavior:'instant'});
+  const play=n=>{
+    n=clamp(n,0,STOPS.length-1);const to=STOPS[n],y0=scrollY,y1=yOf(to),p0=p,t0=performance.now();
+    const dur=to===.2||p0===.2&&to===0?1100:1500;   // 한글 전환은 천천히
+    busy=true;
+    const step=t=>{const k=clamp((t-t0)/dur),q=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+      p=p0+(to-p0)*q;paint();go(y0+(y1-y0)*q);
+      if(k<1)requestAnimationFrame(step);else{busy=false;at=n;lockUntil=performance.now()+650}};   // 같은 스크롤 관성으로 다음 단계까지 넘어가지 않게 잠시 대기
+    requestAnimationFrame(step);
+  };
+  // 재생 중·직후에는 휠·터치·키보드 스크롤을 잠시 막음
+  const held=()=>busy||performance.now()<lockUntil;
+  const hold=e=>{if(held())e.preventDefault()};
+  addEventListener('wheel',hold,{passive:false});addEventListener('touchmove',hold,{passive:false});
+  addEventListener('keydown',e=>{if(held()&&[' ','ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(e.key))e.preventDefault()});
+  // 메뉴·링크로 이동할 때는 자동 재생 대신 지나가는 위치대로만 표시
+  document.addEventListener('click',e=>{if(e.target.closest('a[href^="#"]'))jumpUntil=performance.now()+1600});
+  addEventListener('scroll',()=>{
+    if(busy)return;
+    const y=scrollY;
+    if(performance.now()<jumpUntil){p=byScroll();paint();at=p>=1?2:p>=.2?1:0;return}
+    if(y>=end()-1&&at===2){if(p!==1){p=1;paint()}return}
+    if(y>end()){p=1;paint();at=2;return}
+    if(performance.now()<lockUntil){go(yOf(STOPS[at]));return}   // 대기 중엔 제자리
+    const here=yOf(STOPS[at]);
+    if(Math.abs(y-here)<2)return;
+    play(y>here?at+1:at-1);   // 내리면 다음 단계, 올리면 이전 단계
+  },{passive:true});
+  p=scrollY>=end()-1?1:0;at=p?2:0;paint();
+  if(scrollY>top()+1&&scrollY<end()-1)play(1);
+}
+
+// @component tally : 숫자 카운터 (data-cs-count, 소수는 data-cs-dec)
+function tally(){
+  const els=$$('[data-cs-count]');if(!els.length)return;
+  const fmt=(v,d)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const unitOf=el=>el.querySelector('small')?.outerHTML||'';
+  if(reduce||!('IntersectionObserver' in window))return;   // HTML에 최종 숫자가 이미 적혀 있음
+  const run=el=>{const to=parseFloat(el.dataset.csCount),d=+(el.dataset.csDec||0),u=unitOf(el),t0=performance.now();
+    const tick=t=>{const p=clamp((t-t0)/1800);el.innerHTML=fmt(to*(1-Math.pow(1-p,4)),d)+u;if(p<1)requestAnimationFrame(tick)};
+    requestAnimationFrame(tick)};
+  els.forEach(el=>el.innerHTML=fmt(0,+(el.dataset.csDec||0))+unitOf(el));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);run(e.target)}}),{threshold:.5});
+  els.forEach(el=>io.observe(el));
+}
+
+// @component pin : 세로 스크롤로 슬라이드 넘기기 (PC·모바일 공통). 섹션이 화면에 고정된 동안 화면 높이 70%마다 한 장
+function pin(inner,count,go){
+  const sec=inner.closest('section');if(!sec||count<2)return null;
+  const STEP=.7;let cur=-1,st=0,travel=1,pad=0;
+  const prog=()=>clamp((st-pad-sec.getBoundingClientRect().top)/travel);
+  const sync=()=>{const k=Math.round(prog()*(count-1));if(k!==cur){cur=k;go(k)}};
+  // 고정되는 동안 섹션이 메뉴 바로 아래부터 화면 끝까지 꽉 차고(검은 면 경계가 메뉴 선에 맞음), 내용은 가운데 정렬
+  const layout=()=>{sec.style.height='';sec.style.paddingTop=sec.style.paddingBottom='0';
+    const vh=innerHeight,hh=($('.cs-mast')||{}).offsetHeight||0,room=vh-hh;
+    Object.assign(inner.style,{display:'flex',flexDirection:'column',justifyContent:'center',paddingTop:'40px',paddingBottom:'40px',minHeight:room+'px'});
+    const h=inner.offsetHeight;pad=0;travel=(count-1)*vh*STEP;
+    st=h<=room?hh:Math.min(hh,vh-h);   // 화면보다 긴 내용은 끝까지 본 뒤 고정
+    sec.style.height=(sec.offsetHeight+travel)+'px';inner.style.position='sticky';inner.style.top=st+'px';sync()};
+  addEventListener('scroll',sync,{passive:true});addEventListener('resize',layout);
+  if(document.fonts)document.fonts.ready.then(layout);
+  layout();
+  return k=>{k=clamp(k,0,count-1);cur=-1;scrollTo({top:sec.getBoundingClientRect().top+scrollY+pad-st+travel*k/(count-1),behavior:reduce?'auto':'smooth'})};
+}
+
+// @component reel : 경력 카드 슬라이더 (스크롤로 넘김, 탭·버튼·스와이프는 해당 위치로 이동)
+function reel(){
+  const root=$('[data-cs-reel]');if(!root)return;
+  const view=$('.cs-reel__view',root),track=$('.cs-reel__track',root),cards=$$('.cs-reel__card',root),tabs=$$('[role=tab]',root),g=$('.cs-gauge',root);
+  let i=0;
+  const go=(n,focusTab)=>{
+    i=clamp(n,0,cards.length-1);
+    const max=Math.max(0,track.scrollWidth-view.clientWidth);
+    view.scrollLeft=0;
+    track.style.transform=`translateX(${-Math.min(cards[i].offsetLeft,max)}px)`;
+    cards.forEach((c,k)=>c.classList.toggle('is-on',k===i));
+    tabs.forEach((b,k)=>{b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1});
+    if(g){$('.cs-gauge__n',g).textContent=pad(i+1);$('.cs-gauge__bar',g).style.setProperty('--p',(i+1)/cards.length)}
+    if(focusTab)tabs[i].focus();
+  };
+  const jump=pin(root,cards.length,k=>go(k));
+  const to=(k,f)=>{k=clamp(k,0,cards.length-1);go(k,f);if(jump)jump(k)};
+  tabs.forEach((b,k)=>b.addEventListener('click',()=>to(k)));
+  $('[role=tablist]',root)?.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();to(i+1,true)}
+    if(e.key==='ArrowLeft'){e.preventDefault();to(i-1,true)}
+  });
+  $$('[data-step]',root).forEach(b=>b.addEventListener('click',()=>to(i+ +b.dataset.step)));
+  cards.forEach((c,k)=>{
+    c.addEventListener('click',()=>to(k));
+    c.addEventListener('focus',()=>go(k));
+    c.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&k<cards.length-1){e.preventDefault();cards[k+1].focus()}if(e.key==='ArrowLeft'&&k>0){e.preventDefault();cards[k-1].focus()}});
+  });
+  let sx=null;
+  track.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  track.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)to(i+(dx<0?1:-1));sx=null});
+  addEventListener('resize',()=>go(i));go(0);
+}
+
+// @component stage : 사례 장면 전환 (스크롤로 넘김. 고정이 불가능한 환경에서만 8초 자동 넘김)
+function stage(){
+  const root=$('[data-cs-stage]');if(!root)return;
+  const scenes=$$('.cs-stage__scene',root),g=$('.cs-gauge',root),bar=$('.cs-gauge__bar span',g),play=$('[data-act=toggle]',g);
+  const DUR=8000;let i=0,elapsed=0,paused=reduce,inView=false,hold=false,last=performance.now(),jumpRef=null;
+  const move=k=>{if(jumpRef){k=clamp(k,0,scenes.length-1);show(k);jumpRef(k)}else show(k)};
+  const label=()=>{play.textContent=paused?'▶':'❚❚';play.setAttribute('aria-label',paused?'자동 넘김 재생':'자동 넘김 멈춤')};
+  const show=n=>{i=(n+scenes.length)%scenes.length;elapsed=0;
+    scenes.forEach((s,k)=>{s.classList.toggle('is-on',k===i);s.setAttribute('aria-hidden',k!==i)});
+    $('.cs-gauge__n',g).textContent=pad(i+1)};
+  const loop=t=>{const dt=t-last;last=t;
+    if(!paused&&inView&&!hold){elapsed+=dt;if(elapsed>=DUR)show(i+1)}
+    bar.style.transform=`scaleX(${play.hidden?(i+1)/scenes.length:paused?0:Math.min(elapsed/DUR,1)})`;requestAnimationFrame(loop)};
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>{inView=es[0].isIntersecting},{threshold:.35}).observe(root);else inView=true;
+  root.addEventListener('mouseenter',()=>hold=true);root.addEventListener('mouseleave',()=>hold=false);
+  root.addEventListener('focusin',()=>hold=true);root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget))hold=false});
+  g.addEventListener('click',e=>{const a=e.target.closest('button')?.dataset.act;if(!a)return;
+    if(a==='prev')move(i-1);if(a==='next')move(i+1);if(a==='toggle'){paused=!paused;label()}});
+  $$('[data-cs-scene]').forEach(a=>a.addEventListener('click',e=>{if(jumpRef){e.preventDefault();move(+a.dataset.csScene)}else show(+a.dataset.csScene)}));
+  const jump=pin(root,scenes.length,k=>show(k));
+  if(jump){paused=true;play.hidden=true;jumpRef=jump}
+  label();show(0);requestAnimationFrame(loop);
+}
+
+// @component art : 격자 도형 생성
+function art(){
+  const g=$('[data-cs-art=grid]');if(!g)return;
+  let h='';for(let y=0;y<8;y++)for(let x=0;x<8;x++){const f=(x*3+y*5)%11===0;h+=`<rect x="${x*50+4}" y="${y*50+4}" width="42" height="42"${f?' class="is-fill"':''} style="animation-delay:${(x+y)*.25}s"/>`}
+  g.innerHTML=h;
+}
+
+// @component swap : 바꾸기 전 / 바꾼 후 토글
+function swap(){
+  const root=$('[data-cs-swap]');if(!root)return;
+  const tg=$('.cs-toggle',root),btns=$$('button',tg),msgs=$$('.cs-swap__msg',root);
+  btns.forEach(btn=>btn.addEventListener('click',()=>{
+    const m=btn.dataset.mode;tg.classList.toggle('is-after',m==='after');
+    btns.forEach(b=>b.setAttribute('aria-pressed',b===btn));
+    msgs.forEach(el=>{el.classList.add('is-fade');setTimeout(()=>{el.textContent=el.dataset[m];el.classList.toggle('is-before',m==='before');el.classList.remove('is-fade')},reduce?0:220)});
+  }));
+}
+
+// @component ledger : 프로젝트 탭 (화살표 키 이동, 다른 곳의 data-cs-tab 링크와 연결)
+function ledger(){
+  const root=$('[data-cs-ledger]');if(!root)return;
+  const tabs=$$('[role=tab]',root),panels=$$('[role=tabpanel]',root);let cur=0;
+  const pick=(k,focus)=>{cur=(k+tabs.length)%tabs.length;
+    tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===cur);t.tabIndex=j===cur?0:-1});
+    panels.forEach((p,j)=>p.hidden=j!==cur);if(focus)tabs[cur].focus()};
+  tabs.forEach((t,k)=>t.addEventListener('click',()=>pick(k)));
+  $('[role=tablist]',root).addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();pick(cur+1,true)}
+    if(e.key==='ArrowLeft'){e.preventDefault();pick(cur-1,true)}
+  });
+  $$('[data-cs-tab]').forEach(a=>a.addEventListener('click',()=>{const k=tabs.findIndex(t=>t.dataset.key===a.dataset.csTab);if(k>=0)pick(k)}));
+  pick(0);
+}
+
+// @component story : 스크롤에 따라 단어 채우기
+function story(){
+  const el=$('[data-cs-story]');if(!el)return;
+  el.innerHTML=el.textContent.trim().split(/\s+/).map(w=>`<span>${w}</span>`).join(' ');
+  const ws=[...el.children];
+  if(reduce){ws.forEach(w=>w.classList.add('is-on'));return}
+  const fill=()=>{const r=el.getBoundingClientRect(),p=clamp((innerHeight*.85-r.top)/(r.height+innerHeight*.35));ws.forEach((w,k)=>w.classList.toggle('is-on',k<p*ws.length))};
+  addEventListener('scroll',fill,{passive:true});fill();
+}
+
+// @component sort : 흩어진 조각 → 여섯 단계 정렬
+//   data-cs-sort        : 넓은 화면은 스크롤한 만큼 정리, 좁은 화면·움직임 줄이기는 정리된 상태 + 버튼 (기본)
+//   data-cs-sort="auto" : 보드가 보이면 한 번에 정리 (중간 상태로 멈추지 않음)
+function sort(){
+  const root=$('[data-cs-sort]');if(!root)return;
+  const board=$('.cs-sort__board',root),chips=$$('.cs-sort__chip',root),btn=$('.cs-sort__toggle',root);
+  // 흩어진 자리: 보드 기준 비율 좌표(x, y)와 기울기. 매번 같은 모양이 나오도록 고정값 사용
+  const seeds=[[.06,.70,-8],[.52,.08,6],[.30,.86,4],[.84,.60,-5],[.16,.18,9],[.68,.92,-3],[.44,.48,-10],[.93,.14,7],[.02,.36,3],[.60,.66,-6],[.36,.02,5],[.76,.34,-9]];
+  const auto=root.dataset.csSort==='auto';
+  let offs=[],p=1,manual=false;
+  const narrow=()=>innerWidth<760;
+  const apply=v=>{p=v;const k=1-easeOut(v);
+    chips.forEach((c,j)=>{const o=offs[j];if(o)c.style.transform=`translate(${o.x*k}px,${o.y*k}px) rotate(${o.r*k}deg)`});
+    board.style.setProperty('--p',(1-k).toFixed(3));root.classList.toggle('is-done',v>=.999);
+    btn.textContent=v>=.5?'정리 전 보기':'정리 후 보기';btn.setAttribute('aria-pressed',v<.5)};
+  const measure=()=>{
+    chips.forEach(c=>c.style.transform='none');
+    const b=board.getBoundingClientRect(),H=b.height+120;
+    offs=chips.map((c,j)=>{const r=c.getBoundingClientRect(),s=seeds[j%seeds.length];
+      return{x:b.left+s[0]*(b.width-r.width)-r.left,y:b.top-60+s[1]*(H-r.height)-r.top,r:s[2]}});
+    apply(p);
+  };
+  const animate=v=>{if(!reduce){root.classList.add('is-anim');setTimeout(()=>root.classList.remove('is-anim'),1000)}apply(v)};
+  const onScroll=()=>{if(auto||manual||narrow()||reduce)return;const r=board.getBoundingClientRect(),vh=innerHeight;apply(clamp((vh*.85-r.top)/(vh*.5)))};
+  btn.addEventListener('click',()=>{manual=true;animate(p>=.5?0:1)});
+  if(auto&&!reduce&&'IntersectionObserver' in window){
+    p=0;   // 처음엔 흩어진 상태, 보드가 보이면 한 번에 정리
+    const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();setTimeout(()=>{if(!manual)animate(1)},350)}},{threshold:.45});
+    io.observe(board);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',()=>{if(!auto&&narrow()&&!manual)p=1;measure();onScroll()});
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{measure();onScroll()});
+  measure();onScroll();
+}
+
+// @component folio : 오른쪽 섹션 표시 생성과 현재 위치 강조
+function folio(){
+  const nav=$('[data-cs-folio-nav]'),secs=$$('[data-cs-folio]');if(!nav||!secs.length)return;
+  nav.innerHTML=secs.map(s=>`<a href="#${s.id}"><span>${s.dataset.csFolio}</span><i></i></a>`).join('');
+  const links=[...nav.children];
+  if(!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=secs.indexOf(e.target);links.forEach((a,j)=>a.classList.toggle('is-on',j===k))}}),{rootMargin:'-50% 0px -50% 0px'});
+  secs.forEach(s=>io.observe(s));
+}
+
+// @component boot : 모듈 실행 (하나가 실패해도 나머지는 동작)
+[tr,theme,masthead,rise,cover,tally,reel,stage,art,swap,ledger,story,sort,folio].forEach(fn=>{try{fn()}catch(err){console.error('[cs]',fn.name,err)}});
+})();
+</script>
+</body>
+</html>
